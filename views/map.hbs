@@ -1,0 +1,53 @@
+<h1>SOY EL MAPA</h1>
+
+<figure id="myMap"></figure>
+
+{{#if user}}
+
+
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+
+
+        <div class="col-md-6">
+
+            <h1>Crear caso</h1>
+
+
+
+            <form action="/usuario/{{id}}/crear-caso" method="POST">
+                <div class="mb-3">
+                    <label for="descriptionInput" class="form-label">Descripción</label>
+                    <textarea type="text" class="form-control" id="descriptionInput" rows="3" name="description"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    {{!-- <label for="latInput" class="form-label">Latitud</label> --}}
+                    <input type="hidden" class="form-control" id="latInput" name="lat">
+                </div>
+
+                <div class="mb-3">
+                    {{!-- <label for="lngInput" class="form-label">Longitud</label> --}}
+                    <input type="hidden" class="form-control" id="lngInput" name="lng">
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-dark block">Añadir caso</button>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+
+</div>
+
+{{/if}}
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initMap"></script>

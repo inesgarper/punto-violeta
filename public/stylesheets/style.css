@@ -1,0 +1,28 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #ffffff;
+}
+
+nav {
+  padding: 15px;
+}
+
+nav .btn {
+  border-style: none;
+}
+
+nav .btn:hover {
+  color: rgb(134, 134, 134)
+}
+
+h1 {
+  color: 15px;
+}
+
+#myMap{
+  margin: 20px;
+  height: 550px;
+}
