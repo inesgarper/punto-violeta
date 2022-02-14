@@ -26,3 +26,7 @@ h1 {
   margin: 20px;
   height: 550px;
 }
+
+.navbar-text{
+  margin-left: auto;
+}

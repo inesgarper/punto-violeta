@@ -22,9 +22,11 @@
                <li class="nav-item active">
                   <a class="nav-link" href="/mapa"> <span class="sr-only">mapa</span></a>
                </li>
+               {{#unless user}}
                <li class="nav-item">
                   <a class="nav-link" href="/iniciar-sesion">iniciar sesión</a>
                </li>
+               {{/unless}}
                <li class="nav-item">
                   <a class="nav-link" href="#">eventos</a>
                </li>
