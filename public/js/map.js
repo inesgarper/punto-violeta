@@ -3,6 +3,7 @@ let pointer = false
 
 let conflicto = 6
 
+let borrar
 
 function initMap() {
     drawMap()
