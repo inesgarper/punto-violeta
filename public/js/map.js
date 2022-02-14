@@ -1,6 +1,8 @@
 let map
 let pointer = false
 
+let conflicto = 6
+
 
 function initMap() {
     drawMap()
