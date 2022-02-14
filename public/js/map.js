@@ -1,10 +1,6 @@
 let map
 let pointer = false
 
-let conflicto = 6
-
-let borrar
-
 function initMap() {
     drawMap()
     getCases()
@@ -90,12 +86,10 @@ function printCasesMarkers(cases) {
 
     const { Marker } = google.maps
 
-    const windowText = "<"
-
     cases.forEach(elm => {
 
         const infowindow = new google.maps.InfoWindow({
-            content: elm.description
+            content: `<p>${elm.description}</p> <a href="/usuario/${elm.creator}/${elm._id}" class="btn">ver detalles</a>`
         })
         const marker = new Marker({
             map,

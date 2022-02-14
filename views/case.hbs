@@ -1,0 +1,11 @@
+<p>
+    Soy el caso {{caso._id}}
+
+    creado por el usuario {{id}}
+
+    y descripcióm {{caso.description}}
+</p>
+
+<form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
+    <button class="btn" style="background-color: #f05811;">Eliminar caso</button>
+</form>

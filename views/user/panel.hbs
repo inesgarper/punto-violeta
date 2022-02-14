@@ -1,0 +1,20 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-4">
+            <p>Detalles de {{user.username}}</p>
+            {{req.app.locals}}
+
+            <p>Sus casos:</p>
+            {{#each allUserCases}}
+            <p>{{description}} <a href="/usuario/{{creator._id}}/{{_id}}">Detalle</a></p>
+            {{/each}}
+        </div>
+        <div class="col-8">
+
+            <a href="/usuario/{{user._id}}/editar"></a>
+
+        </div>
+
+    </div>

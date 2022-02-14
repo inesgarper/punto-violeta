@@ -35,6 +35,11 @@
                     <input type="hidden" class="form-control" id="lngInput" name="lng">
                 </div>
 
+                <div class="mb-3">
+                    {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
+                    <input type="hidden" class="form-control" id="creatorId" name="creator" value="{{id}}">
+                </div>
+
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-dark block">Añadir caso</button>
                 </div>
@@ -52,4 +57,4 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/js/mapStyles.js"></script>
 <script src="/js/map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initMap"></script>

@@ -28,10 +28,10 @@
 | POST         	| `/usuario/:id/editar`         | User edit form POST       	| |
 | GET         	| `/mapa`             	| New case    	| |
 | POST         	| `/usuario/:id/crear-caso`     	| New case    	| |
-| GET      	| `/usuario/:id/caso`     	| Case details  | |
+| GET      	| `/usuario/:id/:casoId`     	| Case details  | |
 | GET      	| `/usuario/:id/caso/editar`     	| Case edit | |
 | POST      	| `/usuario/:id/caso/editar`     	| Case edit POST | |
-| POST      	| `/usuario/:id/caso/eliminar`     	| Case edit DELETE | |
+| POST      	| `/usuario/:id/:casoId/eliminar`     	| Case edit DELETE | |
 | POST      	| `/usuario/:id/caso/reportar`     	| Case report | |
 | POST      	| `/usuario/:id/caso/comentar`     	| Case comment | |
 | POST      	| `/usuario/:id/caso/eliminar-comentario`     	| Case comment delete | |
