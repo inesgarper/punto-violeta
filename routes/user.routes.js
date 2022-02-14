@@ -25,12 +25,26 @@ router.post('/:id/crear-caso', (req, res, next) => {
         type: 'Point',
         coordinates: [lat, lng]
     }
-    console.log(location, id, description)
-    Case
-        .create({ creator, description, location })
-        .then(element => console.log(element))
-        .then(res.redirect('/mapa'))
-        .catch(err => console.log(err))
+
+    /////////////
+
+    if (!lat || !lng) {
+        const error = { errorMessage: 'introduce la localización del suceso' }
+
+        router.get('/mapa', (req, res, next) => res.render('map', { error }))
+
+
+
+    } else {
+
+        /////////////
+
+        Case
+            .create({ creator, description, location })
+            .then(element => console.log(element))
+            .then(res.redirect('/mapa'))
+            .catch(err => console.log(err))
+    }
 })
 
 
@@ -49,18 +63,23 @@ router.get('/:id/:casoId', (req, res, next) => {
 
 })
 
+// ------ Edit Case
+router.get(':/id/:casoId/editar', (req, res, next) => {
+    const { id, casoId } = req.params
+
+    User
+        .findById(id)
+})
+
 // ------- Delete Case
 router.post('/:id/:casoId/eliminar', (req, res, next) => {
-    const { casoId, id } = req.params
+    const { id, casoId } = req.params
 
     Case
         .findByIdAndDelete(casoId)
-        .then(() => res.redirect("/mapa"))
+        .then(() => res.redirect(`/usuario/${id}`))
         .catch(err => console.log(err))
 })
-
-
-
 
 // ---------Edit User
 router.get('/:id/editar', (req, res, next) => {

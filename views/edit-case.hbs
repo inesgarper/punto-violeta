@@ -1,0 +1,29 @@
+<h1>SOY EL FORMULARIO PARA EDITAR EL CASO</h1>
+
+<form action="/usuario/{{id}}/:casoId/editar" method="POST">
+    <div class="mb-3">
+        <label for="descriptionInput" class="form-label">Descripción</label>
+        <textarea type="text" class="form-control" id="descriptionInput" rows="3" name="description"
+            value="{{description}}"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="latInput" class="form-label">Latitud</label>
+        <input type="text" class="form-control" id="latInput" name="lat" value="{{location.lat}}">
+    </div>
+
+    <div class="mb-3">
+        <label for="lngInput" class="form-label">Longitud</label>
+        <input type="text" class="form-control" id="lngInput" name="lng" value="{{location.lng}}">
+    </div>
+
+    <div class="mb-3">
+        {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
+        <input type="hidden" class="form-control" id="creatorId" name="creator" value="{{id}}">
+    </div>
+
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-dark block">Añadir caso</button>
+    </div>
+
+</form>

@@ -19,7 +19,8 @@ const eventSchema = new Schema(
       type: {
         type: String,
       },
-      coordinates: [Number]
+      coordinates: [Number],
+      required: [true, 'Debes marcar sobre el mapa el lugar donde ocurrió']
     },
     start: {
       date: Date
