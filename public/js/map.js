@@ -1,6 +1,6 @@
 let map
 let pointer = false
-
+let borrar
 
 function initMap() {
     drawMap()
