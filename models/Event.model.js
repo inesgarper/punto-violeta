@@ -10,7 +10,6 @@ const eventSchema = new Schema(
     },
     type: {
       type: String,
-      enum: ['clase de defensa personal', 'charla', 'manifestación', 'otro']
     },
     description: {
       type: String,
@@ -23,23 +22,19 @@ const eventSchema = new Schema(
       coordinates: [Number]
     },
     start: {
-      date: Date,
-      dateTime: Date,
-      timeZone: String
+      date: Date
     },
     end: {
-      date: Date,
-      dateTime: Date,
-      timeZone: String
+      date: Date
     },
     creator: {
-      type: SchemaTypes.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'User'
     },
     eventImg: {
       type: String,
     },
-    publicated: Boolean
+    published: Boolean
   },
   {
     timestamps: true,

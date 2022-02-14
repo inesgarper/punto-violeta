@@ -25,7 +25,7 @@ const userSchema = new Schema(
       enum: ['USER', 'EDITOR', 'ADMIN'],
       default: 'USER'
     },
-    event: [{
+    events: [{
       type: Schema.Types.ObjectId,
       ref: 'Event'
     }],

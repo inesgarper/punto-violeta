@@ -21,7 +21,8 @@
             <form action="/usuario/{{id}}/crear-caso" method="POST">
                 <div class="mb-3">
                     <label for="descriptionInput" class="form-label">Descripción</label>
-                    <textarea type="text" class="form-control" id="descriptionInput" rows="3" name="description"></textarea>
+                    <textarea type="text" class="form-control" id="descriptionInput" rows="3"
+                        name="description"></textarea>
                 </div>
 
                 <div class="mb-3">
@@ -49,5 +50,6 @@
 {{/if}}
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/mapStyles.js"></script>
 <script src="/js/map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?&callback=initMap"></script>

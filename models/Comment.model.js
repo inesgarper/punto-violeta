@@ -3,19 +3,17 @@ const { Schema, model } = require("mongoose");
 const commentSchema = new Schema(
   {
     creator: {
-      type: SchemaTypes.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'User'
     },
     content: {
       type: String,
       required: [true, 'Escribe un comentario'],
     },
-    publicationTime: {
-      date: Date,
-      dateTime: Date,
-      timeZone: String
+    publishedTime: {
+      date: Date
     },
-    publicated: Boolean,
+    published: Boolean,
     moderated: Boolean,
   },
   {

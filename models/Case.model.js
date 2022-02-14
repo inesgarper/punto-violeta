@@ -9,7 +9,7 @@ const caseSchema = new Schema(
     },
     description: {
       type: String,
-      required: [true, 'Informa sobre el evento'],
+      required: [true, 'Informa sobre el caso'],
     },
     location: {
       type: {
@@ -17,7 +17,7 @@ const caseSchema = new Schema(
       },
       coordinates: [Number]
     },
-    publicated: Boolean,
+    published: Boolean,
     moderated: Boolean
   },
   {

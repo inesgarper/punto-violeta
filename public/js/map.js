@@ -1,6 +1,5 @@
 let map
 let pointer = false
-const user = req.session.currentUser
 
 
 function initMap() {
@@ -8,6 +7,20 @@ function initMap() {
     getCases()
     selectPointer()
     pointerLocation()
+
+
+
+    // const infowindow = new google.maps.InfoWindow({
+    //     content: 'hola'
+    // })
+
+    // const marker1 = new google.maps.Marker({
+    //     position: new google.maps.LatLng(37.38643412087282, -5.992667346003612),
+    //     map,
+    //     title: 'marker de prueba'
+    // })
+
+    // infowindow.open(map, marker1)
 }
 
 function drawMap() {
@@ -19,11 +32,12 @@ function drawMap() {
         {
             zoom: 10,
             center: { lat: 40.392499, lng: -3.698214 },
+            styles: mapStyles.violet
         }
     )
 }
 
-function selectPointer(){
+function selectPointer() {
     google.maps.event.addListener(map, 'click', function (event) {
         //Get the location that the user clicked.
         let clickedLocation = event.latLng;
@@ -44,21 +58,21 @@ function selectPointer(){
             pointer.setPosition(clickedLocation);
         }
         //Get the marker's location.
-        pointerLocation(); 
+        pointerLocation();
     })
 
 }
 
-function pointerLocation(){
+function pointerLocation() {
     //This function will get the marker's current location and then add the lat/long
     //values to our textfields so that we can save the location.
-   
-        //Get location.
-        var currentLocation = pointer.getPosition();
-        //Add lat and lng values to a field that we can save.
-        document.getElementById('latInput').value = currentLocation.lat(); //latitude
-        document.getElementById('lngInput').value = currentLocation.lng(); //longitude
-    
+
+    //Get location.
+    let currentLocation = pointer.getPosition();
+    //Add lat and lng values to a field that we can save.
+    document.getElementById('latInput').value = currentLocation.lat(); //latitude
+    document.getElementById('lngInput').value = currentLocation.lng(); //longitude
+
 }
 
 function getCases() {
@@ -73,17 +87,32 @@ function printCasesMarkers(cases) {
 
     const { Marker } = google.maps
 
+    const windowText = "<"
+
     cases.forEach(elm => {
 
-        new Marker({
+        const infowindow = new google.maps.InfoWindow({
+            content: elm.description
+        })
+        const marker = new Marker({
             map,
             position: {
                 lat: elm.location.coordinates[0],
                 lng: elm.location.coordinates[1]
-            },
+            }
+        })
+
+        marker.addListener('click', () => {
+            infowindow.open({
+                anchor: marker,
+                map,
+                shouldFocus: false,
+            })
         })
 
     })
+
+
 
 }
 function getCoords() {
