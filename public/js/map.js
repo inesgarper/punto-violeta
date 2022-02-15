@@ -6,20 +6,6 @@ function initMap() {
     getCases()
     selectPointer()
     pointerLocation()
-
-
-
-    // const infowindow = new google.maps.InfoWindow({
-    //     content: 'hola'
-    // })
-
-    // const marker1 = new google.maps.Marker({
-    //     position: new google.maps.LatLng(37.38643412087282, -5.992667346003612),
-    //     map,
-    //     title: 'marker de prueba'
-    // })
-
-    // infowindow.open(map, marker1)
 }
 
 function drawMap() {
@@ -91,6 +77,7 @@ function printCasesMarkers(cases) {
         const infowindow = new google.maps.InfoWindow({
             content: `<p>${elm.description}</p> <a href="/usuario/${elm.creator}/${elm._id}" class="btn">ver detalles</a>`
         })
+
         const marker = new Marker({
             map,
             position: {

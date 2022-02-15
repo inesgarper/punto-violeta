@@ -12,4 +12,7 @@ module.exports = app => {
 
     const apiRouter = require("./api.routes");
     app.use("/api", apiRouter)
+
+    const eventsRouter = require("./events.routes");
+    app.use("/eventos", eventsRouter)
 }

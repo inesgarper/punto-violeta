@@ -1,29 +1,41 @@
 <h1>SOY EL FORMULARIO PARA EDITAR EL CASO</h1>
 
-<form action="/usuario/{{id}}/:casoId/editar" method="POST">
+<figure id="editMap"></figure>
+
+<p>Soy el id del caso {{caso._id}}</p>
+<p>Soy el id del creador {{id}}</p>
+
+<form action="/usuario/{{id}}/{{caso._id}}/editar" method="POST">
     <div class="mb-3">
         <label for="descriptionInput" class="form-label">Descripción</label>
-        <textarea type="text" class="form-control" id="descriptionInput" rows="3" name="description"
-            value="{{description}}"></textarea>
+        <input type="text" class="form-control" id="descriptionInput" rows="3" name="description"
+            value="{{caso.description}}"></input>
     </div>
 
     <div class="mb-3">
-        <label for="latInput" class="form-label">Latitud</label>
-        <input type="text" class="form-control" id="latInput" name="lat" value="{{location.lat}}">
+        {{!-- <label for="latInput" class="form-label">Latitud</label> --}}
+        <input type="hidden" class="form-control" id="latInput" name="lat" value="{{caso.location.coordinates.[0]}}">
     </div>
 
     <div class="mb-3">
-        <label for="lngInput" class="form-label">Longitud</label>
-        <input type="text" class="form-control" id="lngInput" name="lng" value="{{location.lng}}">
+        {{!-- <label for="lngInput" class="form-label">Longitud</label> --}}
+        <input type="hidden" class="form-control" id="lngInput" name="lng" value="{{caso.location.coordinates.[1]}}">
     </div>
 
     <div class="mb-3">
         {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
-        <input type="hidden" class="form-control" id="creatorId" name="creator" value="{{id}}">
+        <input type="text" class="form-control" id="creatorId" name="creator" value="{{caso.creator}}">
     </div>
 
     <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-dark block">Añadir caso</button>
+        <button type="submit" class="btn btn-dark block">Editar caso</button>
     </div>
 
 </form>
+
+
+{{!--
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> --}}
+<script src="/js/mapStyles.js"></script>
+<script src="/js/editMap.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initMap"></script>

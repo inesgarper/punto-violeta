@@ -6,15 +6,52 @@
             <p>Detalles de {{user.username}}</p>
             {{req.app.locals}}
 
-            <p>Sus casos:</p>
-            {{#each allUserCases}}
-            <p>{{description}} <a href="/usuario/{{creator._id}}/{{_id}}" class="btn btn-sm btn-dark">Detalle</a></p>
-            {{/each}}
-        </div>
-        <div class="col-8">
+            <ul class="userCases">
+                <h5>Sus casos:</h5>
 
-            <a href="/usuario/{{user._id}}/editar"></a>
+                {{#each allUserCases}}
+                <li>{{description}} <a href="/usuario/{{creator._id}}/{{_id}}" class="btn btn-sm btn-dark">Detalle</a>
+                    <li />
+                    {{/each}}
 
+            </ul>
+
+
+            <button id="edit-user-btn" class="btn btn-sm btn-dark" style="background-color: #7859d3">Editar
+                Perfil</button>
         </div>
+
+        {{#if isEditor}}
+
+        <a href="/eventos/{{user._id}}/crear" id="edit-user-btn" class="btn btn-sm btn-dark" style="background-color: #7859d3">Crear
+            Evento</a>
+
+        {{/if}}
+
+        <form id="edit-form" class="editUser-off" action="/usuario/{{user._id}}/editar" method="POST">
+            <div class="mb-3">
+                <label for="emailInput" class="form-label">Dirección de email</label>
+                <input type="email" class="form-control" id="emailInput" name="email">
+            </div>
+
+            <div class="mb-3">
+                <label for="usernameInput" class="form-label">Nombre de usuario</label>
+                <input type="text" class="form-control" id="usernameInput" name="username">
+            </div>
+
+            <div class="mb-3">
+                <label for="idInput" class="form-label"></label>
+                <input type="hidden" class="form-control" id="idInput" name="id" value="{{user._id}}">
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-dark block">Actualizar datos</button>
+            </div>
+
+        </form>
 
     </div>
+
+
+
+    <script src="/js/editProfile.js"></script>

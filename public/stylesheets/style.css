@@ -22,7 +22,7 @@ h1 {
   color: 15px;
 }
 
-#myMap{
+#myMap, #editMap{
   margin: 20px;
   height: 550px;
 }
@@ -59,4 +59,22 @@ h1 {
   100% {
     bottom: -50px
   }
+}
+
+.userCases a {
+  display: block;
+  max-width: 100px;
+}
+
+.editUser-off {
+  opacity: 0;
+}
+
+.editUser-on {
+  opacity: 100%;
+}
+
+.editForm {
+  margin-left: auto;
+  margin-right: auto;
 }

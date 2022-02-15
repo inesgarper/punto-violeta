@@ -6,6 +6,12 @@
     y descripcióm {{caso.description}}
 </p>
 
+{{#if isSelf}}
+
 <form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
     <button class="btn" style="background-color: #f05811;">Eliminar caso</button>
 </form>
+
+<a href="/usuario/{{id}}/{{caso._id}}/editar" class="btn-dark">Editar caso</a>
+
+{{/if}}

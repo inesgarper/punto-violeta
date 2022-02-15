@@ -20,22 +20,21 @@
 | GET         	| `/mapa` 	            | Map	| |
 | GET         	| `/registro` 	| Register Form Render	| |
 | POST         	| `/registro` 	| Register Form Post	| |
-| GET         	| `/usuario/inicio-sesion` 	| Sing-in	| |
+| GET         	| `/iniciar-sesion` 	| Sing-in	| |
 | POST        	| `/usuario/inicio-sesion` 	| Sing-in 	| |
 | POST       	| `/usuario/cerrar-sesion`         	| Log-out        	| |
 | GET         	| `/usuario/:id`             	| User profile   	| |
-| GET         	| `/usuario/:id/editar`         | User edit form render 	| |
 | POST         	| `/usuario/:id/editar`         | User edit form POST       	| |
 | GET         	| `/mapa`             	| New case    	| |
 | POST         	| `/usuario/:id/crear-caso`     	| New case    	| |
 | GET      	| `/usuario/:id/:casoId`     	| Case details  | |
-| GET      	| `/usuario/:id/caso/editar`     	| Case edit | |
-| POST      	| `/usuario/:id/caso/editar`     	| Case edit POST | |
+| GET      	| `/usuario/:id/:casoId/editar`     	| Case edit | |
+| POST      	| `/usuario/:id/:casoId/editar`     	| Case edit POST | |
 | POST      	| `/usuario/:id/:casoId/eliminar`     	| Case edit DELETE | |
 | POST      	| `/usuario/:id/caso/reportar`     	| Case report | |
 | POST      	| `/usuario/:id/caso/comentar`     	| Case comment | |
 | POST      	| `/usuario/:id/caso/eliminar-comentario`     	| Case comment delete | |
-| GET     	| `/evento/`     	| Event list | |
+| GET     	| `/eventos/`     	| Event list | |
 | GET     	| `/evento/crear`     	| Event create | |
 | POST    	| `/evento/crear`     	| Event create | |
 | GET     	| `/evento/:id/editar`     	| Event edit| |

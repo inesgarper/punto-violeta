@@ -1,0 +1,15 @@
+<h1>Maaaazo de eventos</h1>
+
+<ul class="list-group">
+
+    {{#each allEvents}}
+
+    <li class="list-group"> {{title}}</li>
+    <form action="/eventos/{{id}}/unirse" method="POST">
+        {{!-- <input type="text" name="eventId" value="{{id}}"> --}}
+        <button class="btn btn-dark" style="background-color: #7859d3">Unirme al evento</button>
+    </form>
+
+    {{/each}}
+
+</ul>

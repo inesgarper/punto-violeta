@@ -1,0 +1,66 @@
+<h1>PANEL PARA GESTIONAR EVENTOS</h1>
+
+<div class="row">
+
+    <div class="col-5">
+        <h4>EDITAR EVENTO</h4>
+        <form action="/eventos/:id/editar" method="POST">
+
+            <div class="mb-3">
+                <label for="titleInput" class="form-label">Título del evento:</label>
+                <input type="text" class="form-control" id="titleInput" name="title" value="">
+            </div>
+
+            <div class="mb-3">
+                <label for="typeInput" class="form-label">Tipo de evento:</label>
+                <input type="text" class="form-control" id="typeInput" name="type">
+            </div>
+
+            <div class="mb-3">
+                <label for="descriptionInput" class="form-label">Descripción:</label>
+                <textarea type="text" class="form-control" id="descriptionInput" rows="3" name="description"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="descriptionInput" class="form-label">Dirección del evento:</label>
+                <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"
+                    class="form-control">
+            </div>
+
+            <div class="mb-3">
+                {{!-- <label for="latInput" class="form-label">Latitud</label> --}}
+                <input type="date" class="form-control" id="start" name="start">
+            </div>
+
+            <div class="mb-3">
+                {{!-- <label for="lngInput" class="form-label">Longitud</label> --}}
+                <input type="date" class="form-control" id="end" name="end">
+            </div>
+
+            <div class="mb-3">
+                {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
+                <input type="hidden" class="form-control" id="creatorId" name="creator" value="{{id}}">
+            </div>
+
+            <div class="mb-3">
+                {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
+                <input type="text" class="form-control" id="mapsURL" name="url">
+            </div>
+
+            <div class="mb-3">
+                {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
+                <input type="text" class="form-control" id="address" name="address">
+            </div>
+
+
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-dark block">Añadir Evento</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
