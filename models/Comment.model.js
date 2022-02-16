@@ -10,11 +10,18 @@ const commentSchema = new Schema(
       type: String,
       required: [true, 'Escribe un comentario'],
     },
-    publishedTime: {
-      date: Date
+    published: {
+      type: Boolean, 
+      default: true
+    } ,
+    moderated: {
+      type: Boolean,
+      default: true
     },
-    published: Boolean,
-    moderated: Boolean,
+    caseId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Case'
+    }
   },
   {
     timestamps: true,

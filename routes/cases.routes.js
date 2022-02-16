@@ -1,5 +1,6 @@
 const router = require("express").Router();
 
+const { path } = require("express/lib/application");
 const { isLoggedIn } = require("../middleware/route-guard");
 const Case = require("../models/Case.model");
 // const User = require("../models/User.model");
@@ -14,8 +15,6 @@ router.post('/:id/crear-caso', (req, res, next) => {
         type: 'Point',
         coordinates: [lat, lng]
     }
-
-    ///////////// NO FUNCIONA no pinta el mensaje
 
     if (!lat || !lng) {
 
@@ -41,6 +40,13 @@ router.get('/:id/:casoId', isLoggedIn, (req, res, next) => {
 
     Case
         .findById(casoId)
+        .populate('creator')
+        .populate({
+            path: 'comments', 
+            populate: [
+                {path:'creator'}
+            ]  
+         })
         .then(caso => res.render('case', { id, caso, isSelf }))
         .catch(err => console.log(err))
 })

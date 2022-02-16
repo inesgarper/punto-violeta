@@ -8,8 +8,7 @@
 <form action="/usuario/{{id}}/{{caso._id}}/editar" method="POST">
     <div class="mb-3">
         <label for="descriptionInput" class="form-label">Descripción</label>
-        <input type="text" class="form-control" id="descriptionInput" rows="3" name="description"
-            value="{{caso.description}}"></input>
+        <textarea type="text" class="form-control" id="descriptionInput" rows="3" name="description">{{caso.description}}</textarea>
     </div>
 
     <div class="mb-3">

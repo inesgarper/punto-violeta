@@ -16,7 +16,6 @@
 
             </ul>
 
-
             <button id="edit-user-btn" class="btn btn-sm btn-dark" style="background-color: #7859d3">Editar
                 Perfil</button>
         </div>
@@ -26,7 +25,22 @@
         <a href="/eventos/crear" id="edit-user-btn" class="btn btn-sm btn-dark" style="background-color: #7859d3">Crear
             Evento</a>
 
-        {{/if}}
+        <h2>LISTA DE EVENTOS</h2>
+
+        {{#each allEvents}}
+
+        <li class="list-group"> {{title}}</li>
+        <form action="/eventos/{{id}}/eliminar" method="POST">
+            <button class="btn btn-danger">Eliminar evento</button>
+        </form>
+
+        <form action="/eventos/{{id}}/editar" method="POST">
+            <button class="btn btn-info">Editar evento</button>
+        </form>
+
+        {{/each}}       
+
+         {{/if}}
 
         <form id="edit-form" class="editUser-off" action="/usuario/{{user._id}}/editar" method="POST">
             <div class="mb-3">
@@ -54,4 +68,4 @@
 
 
 
-    <script src="/js/editProfile.js"></script>
+    <sript src="/js/editProfile.js"></script>

@@ -14,12 +14,7 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
     const isEditor = userIsEditor(user)
 
     Promise.all(promises)
-        .then(([allUserCases, user]) => {
-           
-            console.log(isEditor)
-            res.render('user/panel', { allUserCases, user, isEditor })
-
-        })
+        .then(([allUserCases, user]) => res.render('user/panel', { allUserCases, user, isEditor }))
         .catch(err => console.log(err))
 })
 ///// Edit User POST

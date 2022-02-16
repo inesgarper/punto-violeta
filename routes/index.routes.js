@@ -1,6 +1,6 @@
+const router = require("express").Router();
 const { isLoggedIn } = require("../middleware/route-guard");
 
-const router = require("express").Router();
 
 /* GET home page - landing*/
 router.get("/",  (req, res, next) => {

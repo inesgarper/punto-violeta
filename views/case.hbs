@@ -1,17 +1,60 @@
-<p>
-    Soy el caso {{caso._id}}
+<div class="container">
 
-    creado por el usuario {{id}}
+    <div class="row">
 
-    y descripcióm {{caso.description}}
-</p>
+        <div class="col-8">
+            <article>
+                {{caso.description}}
+                <hr>
+                <p>
+                    Creado por {{caso.creator.username}}
+                </p>
+            </article>
 
-{{#if isSelf}}
 
-<form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
-    <button class="btn" style="background-color: #f05811;">Eliminar caso</button>
-</form>
 
-<a href="/usuario/{{id}}/{{caso._id}}/editar" class="btn-dark">Editar caso</a>
+            {{#if isSelf}}
 
-{{/if}}
+            <form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
+                <button class="btn btn-dark" style="background-color: #f05811;">Eliminar caso</button>
+            </form>
+
+            <a class="btn btn-dark" style="background-color: #e6d412;" href="/usuario/{{id}}/{{caso._id}}/editar"
+                class="btn-dark">Editar caso</a>
+
+            {{/if}}
+
+            <div class="container" id="commets">
+
+                <form class="form-group" action="/usuario/{{id}}/caso/comentar" method="POST">
+                    <label for="comment">Comenta</label>
+                    <textarea class="form-control" id="comment" rows="3" name="content"></textarea>
+                    <input type="hidden" name="caseId" value="{{caso._id}}">
+                    <input type="hidden" name="creator" value="{{id}}">
+
+                    <button class="btn btn-dark" style="background-color: #980aad">Añadir</button>
+                </form>
+
+                <ul class="list-group">
+
+                    {{#each caso.comments}}
+                    <li class="list-group-item">{{this.content}}
+                        <p class="postedBy"> <strong>{{this.creator.username}}</strong> </p>
+
+                        <form action="/usuario/{{this._id}}/eliminar-comentario" method="POST">
+
+                            <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
+                        </form>
+
+                    </li>
+                    {{/each}}
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

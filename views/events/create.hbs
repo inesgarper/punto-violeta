@@ -3,7 +3,7 @@
 
     <div class="col-5">
 <h5>CREAR EVENTO</h5>
-<form action="/eventos/{{id}}/crear" method="POST">
+<form action="/eventos/crear" method="POST">
 
     <div class="mb-3">
         <label for="titleInput" class="form-label">Título del evento:</label>
@@ -38,7 +38,7 @@
 
     <div class="mb-3">
         {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
-        <input type="text" class="form-control" id="creatorId" name="creator" value="{{id}}">
+        <input type="hidden" class="form-control" id="creatorId" name="creator" value="{{userId}}">
     </div>
 
     <div class="mb-3">
@@ -72,4 +72,4 @@
 
 <script src="/js/auto-complete.js"></script>
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=&callback=initAutocomplete&libraries=places"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi1_pFt2aNH7iIISEYWGm8FqYqnM1xs7w&callback=initAutocomplete&libraries=places"></script>

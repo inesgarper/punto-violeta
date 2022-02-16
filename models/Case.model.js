@@ -17,6 +17,10 @@ const caseSchema = new Schema(
       },
       coordinates: [Number]
     },
+    comments: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Comment', 
+    }],
     published: Boolean,
     moderated: Boolean
   },
