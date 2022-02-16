@@ -23,10 +23,10 @@
                 class="btn-dark">Editar caso</a>
 
             {{/if}}
+n
+            <div class="container" id="comments">
 
-            <div class="container" id="commets">
-
-                <form class="form-group" action="/usuario/{{id}}/caso/comentar" method="POST">
+                <form class="form-group" action="/usuario/{{caso._id}}/caso/comentar" method="POST">
                     <label for="comment">Comenta</label>
                     <textarea class="form-control" id="comment" rows="3" name="content"></textarea>
                     <input type="hidden" name="caseId" value="{{caso._id}}">

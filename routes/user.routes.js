@@ -8,10 +8,18 @@ const { userIsSelf, userIsEditor } = require("../utils");
 // ------ User Panel & User Edit GET
 router.get('/:id', isLoggedIn, (req, res, next) => {
     const { id } = req.params
-    const promises = [Case.find({ creator: id }).populate('creator'), User.findById(id)]
+    const promises = [Case.find({ creator: id }).populate('creator'), User.findById(id).populate('events')]
     
     const user = req.session.currentUser
     const isEditor = userIsEditor(user)
+    const isSelf = userIsSelf(id, req.session.currentUser._id)
+
+    console.log(isSelf)
+    
+    if(!isSelf){
+        res.redirect('back')
+        return
+    }
 
     Promise.all(promises)
         .then(([allUserCases, user]) => res.render('user/panel', { allUserCases, user, isEditor }))
