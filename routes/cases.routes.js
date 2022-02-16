@@ -4,15 +4,12 @@ const { path } = require("express/lib/application");
 const { isLoggedIn } = require("../middleware/route-guard");
 const Case = require("../models/Case.model");
 // const User = require("../models/User.model");
-const { userIsSelf, userIsEditor } = require("../utils");
+const { userIsSelf, userIsEditor, commentsAreAdmitted, commentsAreDisable, isYourCase } = require("../utils");
 
 
 // ----------- CREATE CASE POST
 router.post('/:id/crear-caso', (req, res, next) => {
-    const { lat, lng, description, creator, admiteComments } = req.body
-
-    console.log(admiteComments)
-    console.log(req.body)
+    const { lat, lng, description, creator, admitteComments } = req.body
 
     const location = {
         type: 'Point',
@@ -28,7 +25,7 @@ router.post('/:id/crear-caso', (req, res, next) => {
         return
     }
     Case
-        .create({ creator, description, location, admiteComments })
+        .create({ creator, description, location, admitteComments })
         .then(() => res.redirect('/mapa'))
         .catch(err => console.log(err))
 
@@ -43,7 +40,7 @@ router.get('/:id/:casoId', isLoggedIn, (req, res, next) => {
     const isEditor = userIsEditor(req.session.currentUser)
 
 
-    console.log('es el mismo',isSelf,'es editor', isEditor )
+    // console.log('es el mismo', isSelf, 'es editor', isEditor)
 
     Case
         .findById(casoId)
@@ -51,10 +48,23 @@ router.get('/:id/:casoId', isLoggedIn, (req, res, next) => {
         .populate({
             path: 'comments',
             populate: [
-                {path:'creator'}
-            ]  
-         })
-        .then(caso => res.render('case', { id, caso, isSelf, isEditor, user:req.session.currentUser }))
+                { path: 'creator' }
+            ]
+        })
+        .then(caso => {
+            res.render('case', {
+                id,
+                caso,
+                isSelf,
+                isEditor,
+                user: req.session.currentUser,
+                includesComments: commentsAreAdmitted(caso),
+                disableComments: commentsAreDisable(caso),
+                // isYourCase: isYourCase(caso, req.session.currentUser._id)
+            })
+            console.log
+        }
+        )
         .catch(err => console.log(err))
 })
 

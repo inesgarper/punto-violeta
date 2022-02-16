@@ -17,16 +17,16 @@ router.post('/:id/caso/comentar', (req, res, next) => {
             return Case.findByIdAndUpdate(caseId, { $addToSet: { comments: comment } })
         })
 
-        .then(() => res.redirect(`/usuario/${creator}/${caseId}`))
+        .then(() => res.redirect('back'))
         .catch(err => console.log(err))
 })
 
 // ---- Delete Comment
 
-router.post('/:id/eliminar-comentario', (req, res, next) =>{
+router.post('/:id/eliminar-comentario', (req, res, next) => {
 
-    
-    const {id} = req.params
+
+    const { id } = req.params
 
     Comment
         .findByIdAndDelete(id)

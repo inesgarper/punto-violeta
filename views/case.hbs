@@ -24,6 +24,14 @@
 
             {{/if}}
 
+            {{#if disableComments}}
+
+            <p>LOS COMENTARIOS NO ESTÁN HABILITADOS PARA ESTE CASO</p>
+
+            {{/if}}
+
+            {{#if includesComments}}
+
             <div class="container" id="commets">
 
                 <form class="form-group" action="/usuario/{{id}}/caso/comentar" method="POST">
@@ -42,11 +50,11 @@
                         <p class="postedBy"> <strong>{{this.creator.username}}</strong> </p>
 
                         {{#if ../isEditor}}
-                        
+
                         <form action="/usuario/{{this._id}}/eliminar-comentario" method="POST">
                             <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
                         </form>
-                        
+
                         {{/if}}
 
 
@@ -56,6 +64,8 @@
                 </ul>
 
             </div>
+
+            {{/if}}
 
         </div>
 
