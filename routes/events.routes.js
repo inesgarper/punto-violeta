@@ -4,11 +4,15 @@ const User = require("../models/User.model");
 const Event = require("../models/Event.model")
 
 const { isLoggedIn } = require("../middleware/route-guard");
-const { userIsSelf } = require("../utils");
+const { userIsSelf, userIsEditor } = require("../utils");
 
 
 // ------- All Events List
-router.get('/', (req, res, next) => {
+router.get('/', isLoggedIn, (req, res, next) => {
+
+    const user = req.session.currentUser
+    const isEditor = userIsEditor(user)
+    console.log(isEditor)
 
     Event
         .find()
@@ -40,7 +44,7 @@ router.post('/crear', (req, res, next) => {
 
 // ----------Join Event
 
-router.post('/:id/unirse', (req, res, next) => {
+router.post('/:id/unirse', isLoggedIn, (req, res, next) => {
 
     const userId = req.session.currentUser._id
     const { id } = req.params
@@ -53,7 +57,7 @@ router.post('/:id/unirse', (req, res, next) => {
 
 // ------Unjoin Event
 
-router.post('/:id/desunirse', (req, res, next) => {
+router.post('/:id/desunirse', isLoggedIn, (req, res, next) => {
 
     const userId = req.session.currentUser._id
     const { id } = req.params
@@ -66,7 +70,7 @@ router.post('/:id/desunirse', (req, res, next) => {
 
 // ------ Delete Events
 
-router.post('/:id/eliminar', (req, res, next) => {
+router.post('/:id/eliminar', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
     const userId = req.session.currentUser._id
@@ -82,7 +86,7 @@ router.post('/:id/eliminar', (req, res, next) => {
 
 // ------- Edit Events 
 
-router.get('/:id/editar', (req, res, next) => {
+router.get('/:id/editar', isLoggedIn, (req, res, next) => {
     const { id } = req.params
 
     Event
@@ -91,7 +95,7 @@ router.get('/:id/editar', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-router.post('/:id/editar', (req, res, next) => {
+router.post('/:id/editar', isLoggedIn, (req, res, next) => {
     const { id } = req.params
 
     const { title, type, description, address, URL, start, end, creator, eventImg } = req.body

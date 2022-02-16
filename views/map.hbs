@@ -40,16 +40,28 @@
                     <input type="hidden" class="form-control" id="creatorId" name="creator" value="{{id}}">
                 </div>
 
-                <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-dark block">Añadir caso</button>
-                </div>
-                {{#if errorMessage}}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="admitteComments" value="on"
+                        id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        ¿Te gustaría recibir comentarios?
+                    </label>
 
-                <div id="errorMessage">
-                    <h1>{{errorMessage}}</h1>
-                </div>
+                    {{!-- <div class="mb-3">
+                        <label for="admiteCommentsInput" class="form-label">¿Te gustaría recibir comentarios?</label>
+                        <input type="checkbox" class="form-control" id="admiteCommentsInput" name="admiteComments">
+                    </div> --}}
 
-                {{/if}}
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-dark block">Añadir caso</button>
+                    </div>
+                    {{#if errorMessage}}
+
+                    <div id="errorMessage">
+                        <h1>{{errorMessage}}</h1>
+                    </div>
+
+                    {{/if}}
 
             </form>
 

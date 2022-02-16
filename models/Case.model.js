@@ -19,8 +19,13 @@ const caseSchema = new Schema(
     },
     comments: [{
       type: Schema.Types.ObjectId,
-      ref: 'Comment', 
+      ref: 'Comment',
     }],
+    admitteComments: {
+      type: String,
+      enum: ['on', 'off'],
+      default: 'off'
+    },
     published: Boolean,
     moderated: Boolean
   },

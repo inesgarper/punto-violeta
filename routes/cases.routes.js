@@ -9,7 +9,10 @@ const { userIsSelf, userIsEditor } = require("../utils");
 
 // ----------- CREATE CASE POST
 router.post('/:id/crear-caso', (req, res, next) => {
-    const { lat, lng, description, creator } = req.body
+    const { lat, lng, description, creator, admiteComments } = req.body
+
+    console.log(admiteComments)
+    console.log(req.body)
 
     const location = {
         type: 'Point',
@@ -20,15 +23,15 @@ router.post('/:id/crear-caso', (req, res, next) => {
 
         const user = req.session.currentUser
         const id = req.session.currentUser._id
-        
-        res.render('map', { errorMessage: 'introduce la localización del suceso', user,id })
+
+        res.render('map', { errorMessage: 'introduce la localización del suceso', user, id })
         return
     }
-        Case
-            .create({ creator, description, location })
-            .then(() => res.redirect('/mapa'))
-            .catch(err => console.log(err))
-    
+    Case
+        .create({ creator, description, location, admiteComments })
+        .then(() => res.redirect('/mapa'))
+        .catch(err => console.log(err))
+
 })
 
 
@@ -46,7 +49,7 @@ router.get('/:id/:casoId', isLoggedIn, (req, res, next) => {
         .findById(casoId)
         .populate('creator')
         .populate({
-            path: 'comments', 
+            path: 'comments',
             populate: [
                 {path:'creator'}
             ]  
