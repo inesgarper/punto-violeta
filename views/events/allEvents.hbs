@@ -2,6 +2,10 @@
 
 <ul class="list-group">
 
+    {{#if isEditor}}
+    <p>SOY EL EDITOR</p>
+    {{/if}}
+
     {{#each allEvents}}
 
     <li class="list-group"> {{title}}</li>
@@ -14,11 +18,16 @@
         <button class="btn btn-warning">Desunirme al evento</button>
     </form>
 
+    {{#if ../isEditor}}
+
+
     <form action="/eventos/{{id}}/eliminar" method="POST">
         <button class="btn btn-danger">Eliminar evento</button>
     </form>
 
     <a class="btn btn-info" href="/eventos/{{id}}/editar">Editar evento</a>
+
+    {{/if}}
 
     {{/each}}
 
