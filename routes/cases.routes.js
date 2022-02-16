@@ -37,6 +37,10 @@ router.get('/:id/:casoId', isLoggedIn, (req, res, next) => {
 
     const { id, casoId } = req.params
     const isSelf = userIsSelf(req.session.currentUser._id, id)
+    const isEditor = userIsEditor(req.session.currentUser)
+
+
+    console.log('es el mismo',isSelf,'es editor', isEditor )
 
     Case
         .findById(casoId)
@@ -47,7 +51,7 @@ router.get('/:id/:casoId', isLoggedIn, (req, res, next) => {
                 {path:'creator'}
             ]  
          })
-        .then(caso => res.render('case', { id, caso, isSelf }))
+        .then(caso => res.render('case', { id, caso, isSelf, isEditor, user:req.session.currentUser }))
         .catch(err => console.log(err))
 })
 
