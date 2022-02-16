@@ -26,13 +26,19 @@ function selectPointer() {
     google.maps.event.addListener(map, 'click', function (event) {
         //Get the location that the user clicked.
         let clickedLocation = event.latLng;
+
+
+        const image = 'https://i.ibb.co/sKmTRyw/pointer.png'
+
         //If the marker hasn't been added.
         if (pointer === false) {
             //Create the marker.
             pointer = new google.maps.Marker({
                 position: clickedLocation,
                 map: map,
-                draggable: true //make it draggable
+                draggable: true, //make it draggable
+                icon: image
+
             });
             //Listen for drag events!
             google.maps.event.addListener(pointer, 'dragend', function (event) {
@@ -78,12 +84,16 @@ function printCasesMarkers(cases) {
             content: `<p>${elm.description}</p> <a href="/usuario/${elm.creator}/${elm._id}" class="btn">ver detalles</a>`
         })
 
+        const image = 'https://i.ibb.co/QDvh6yP/marker.png'
+
         const marker = new Marker({
             map,
             position: {
                 lat: elm.location.coordinates[0],
                 lng: elm.location.coordinates[1]
-            }
+            },
+            icon: image,
+            animation: google.maps.Animation.DROP
         })
 
         marker.addListener('click', () => {
