@@ -2,9 +2,9 @@ const { isLoggedIn } = require("../middleware/route-guard");
 
 const router = require("express").Router();
 
-/* GET home page */
-router.get("/",
-  (req, res, next) => {
+/* GET home page - landing*/
+router.get("/",  (req, res, next) => {
+
     const user = req.session.currentUser
 
     if (!user) {
@@ -14,11 +14,9 @@ router.get("/",
       const id = req.session.currentUser._id
       res.render("index", { id, user: req.session.currentUser })
     }
+})
 
-
-  });
-
-// ---- MAP and CREATE CASE GET
+// ---- MAP and Case Form
 router.get("/mapa", (req, res, next) => {
 
   const user = req.session.currentUser

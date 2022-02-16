@@ -54,11 +54,12 @@ function selectPointer() {
 
 function pointerLocation() {
     
+  
     let currentLocation = pointer.getPosition();
     
     document.getElementById('latInput').value = currentLocation.lat(); 
     document.getElementById('lngInput').value = currentLocation.lng(); 
-
+    
 }
 
 function getCases() {

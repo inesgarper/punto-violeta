@@ -10,6 +10,9 @@ module.exports = app => {
     const userRouter = require("./user.routes");
     app.use("/usuario", userRouter)
 
+    const casesRouter = require("./cases.routes");
+    app.use("/usuario", casesRouter)
+
     const apiRouter = require("./api.routes");
     app.use("/api", apiRouter)
 

@@ -8,11 +8,13 @@ const { findByIdAndUpdate } = require("../models/Case.model");
 const { redirect } = require("express/lib/response");
 
 // ------- Create events
-router.get('/:id/crear', isLoggedIn, (req, res, next) => {
+router.get('/crear', isLoggedIn, (req, res, next) => {
 
-    const { id } = req.params
+    //const { id } = req.params
 
-    res.render('events/create', { id })
+    const userId = req.session.currentUser._id
+
+    res.render('events/create', { userId })
 })
 
 // ----------Join Event

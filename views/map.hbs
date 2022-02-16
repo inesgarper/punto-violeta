@@ -43,8 +43,16 @@
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-dark block">Añadir caso</button>
                 </div>
+                {{#if errorMessage}}
+
+                <div id="errorMessage">
+                    <h1>{{errorMessage}}</h1>
+                </div>
+
+                {{/if}}
 
             </form>
+
 
 
         </div>
@@ -52,7 +60,11 @@
 
 </div>
 
+
 {{/if}}
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/js/mapStyles.js"></script>
