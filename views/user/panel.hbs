@@ -6,12 +6,12 @@
             <p>Detalles de {{user.username}}</p>
             {{req.app.locals}}
 
-            <ul class="userCases">
+            <ul class="userCases list-group">
                 <h5>Sus casos:</h5>
 
                 {{#each allUserCases}}
-                <li>{{description}} <a href="/usuario/{{creator._id}}/{{_id}}" class="btn btn-sm btn-dark">Detalle</a>
-                    <li />
+                <li class="group-items">{{description}} <a href="/usuario/{{creator._id}}/{{_id}}" class="btn btn-sm btn-dark">Detalle</a>
+                    </li>
                     {{/each}}
 
             </ul>
@@ -27,20 +27,41 @@
 
         <h2>LISTA DE EVENTOS</h2>
 
-        {{#each allEvents}}
+        <div class="container">
 
-        <li class="list-group"> {{title}}</li>
-        <form action="/eventos/{{id}}/eliminar" method="POST">
-            <button class="btn btn-danger">Eliminar evento</button>
-        </form>
+            <ul class="list-group">
+                {{#each allEvents}}
+                <li class="list-group-item"> {{title}}
 
-        <form action="/eventos/{{id}}/editar" method="POST">
-            <button class="btn btn-info">Editar evento</button>
-        </form>
+                    <form action="/eventos/{{id}}/eliminar" method="POST">
+                        <button class="btn btn-danger">Eliminar evento</button>
+                    </form>
+                    <form action="/eventos/{{id}}/editar" method="POST">
+                        <button class="btn btn-info">Editar evento</button>
+                    </form>
 
-        {{/each}}
-
+                </li>
+                {{/each}}
+            </ul>
+        </div>
         {{/if}}
+
+        <div class="container">
+        
+            <ul class="list-group">
+                
+                {{#each user.events}}
+                <li class="list-group-item"> <strong>{{title}}</strong>
+        
+                    <article>
+                        {{description}}
+                        <a class="btn-sm btn-success" href="{{location.URL}}">Cómo Llegar</a>
+                    </article>
+        
+                </li>
+                {{/each}}
+            </ul>
+        </div>
 
         <form id="edit-form" class="editUser-off" action="/usuario/{{user._id}}/editar" method="POST">
             <div class="mb-3">

@@ -23,52 +23,54 @@
                 class="btn-dark">Editar caso</a>
 
             {{/if}}
+            n
+            <div class="container" id="comments">
 
-            {{#if disableComments}}
+                {{#if disableComments}}
 
-            <p>LOS COMENTARIOS NO ESTÁN HABILITADOS PARA ESTE CASO</p>
+                <p>LOS COMENTARIOS NO ESTÁN HABILITADOS PARA ESTE CASO</p>
 
-            {{/if}}
+                {{/if}}
 
-            {{#if includesComments}}
+                {{#if includesComments}}
 
-            <div class="container" id="commets">
+                <div class="container" id="commets">
 
-                <form class="form-group" action="/usuario/{{id}}/caso/comentar" method="POST">
-                    <label for="comment">Comenta</label>
-                    <textarea class="form-control" id="comment" rows="3" name="content"></textarea>
-                    <input type="hidden" name="caseId" value="{{caso._id}}">
-                    <input type="hidden" name="creator" value="{{id}}">
+                    <form class="form-group" action="/usuario/{{id}}/caso/comentar" method="POST">
+                        <label for="comment">Comenta</label>
+                        <textarea class="form-control" id="comment" rows="3" name="content"></textarea>
+                        <input type="hidden" name="caseId" value="{{caso._id}}">
+                        <input type="hidden" name="creator" value="{{id}}">
 
-                    <button class="btn btn-dark" style="background-color: #980aad">Añadir</button>
-                </form>
+                        <button class="btn btn-dark" style="background-color: #980aad">Añadir</button>
+                    </form>
 
-                <ul class="list-group">
+                    <ul class="list-group">
 
-                    {{#each caso.comments}}
-                    <li class="list-group-item">{{this.content}}
-                        <p class="postedBy"> <strong>{{this.creator.username}}</strong> </p>
+                        {{#each caso.comments}}
+                        <li class="list-group-item">{{this.content}}
+                            <p class="postedBy"> <strong>{{this.creator.username}}</strong> </p>
 
-                        {{#if ../isEditor}}
+                            {{#if ../isEditor}}
 
-                        <form action="/usuario/{{this._id}}/eliminar-comentario" method="POST">
-                            <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
-                        </form>
+                            <form action="/usuario/{{this._id}}/eliminar-comentario" method="POST">
+                                <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
+                            </form>
 
-                        {{/if}}
+                            {{/if}}
 
 
-                    </li>
-                    {{/each}}
+                        </li>
+                        {{/each}}
 
-                </ul>
+                    </ul>
+
+                </div>
+
+                {{/if}}
 
             </div>
-
-            {{/if}}
 
         </div>
 
     </div>
-
-</div>
