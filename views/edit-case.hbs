@@ -1,37 +1,59 @@
-<h1>SOY EL FORMULARIO PARA EDITAR EL CASO</h1>
+<div class="container">
+    <h1>EDITAR EL CASO</h1>
 
-<figure id="editMap"></figure>
+    <figure id="editMap"></figure>
 
-<p>Soy el id del caso {{caso._id}}</p>
-<p>Soy el id del creador {{id}}</p>
+    <form action="/usuario/{{id}}/{{caso._id}}/editar" method="POST">
+        <div class="mb-3">
+            <label for="descriptionInput" class="form-label">Descripción</label>
+            <textarea type="text" class="form-control" id="descriptionInput" rows="3"
+                name="description">{{caso.description}}</textarea>
+        </div>
 
-<form action="/usuario/{{id}}/{{caso._id}}/editar" method="POST">
-    <div class="mb-3">
-        <label for="descriptionInput" class="form-label">Descripción</label>
-        <textarea type="text" class="form-control" id="descriptionInput" rows="3"
-            name="description">{{caso.description}}</textarea>
-    </div>
+        <div class="mb-3">
+            {{!-- <label for="latInput" class="form-label">Latitud</label> --}}
+            <input type="hidden" class="form-control" id="latInput" name="lat"
+                value="{{caso.location.coordinates.[0]}}">
+        </div>
 
-    <div class="mb-3">
-        {{!-- <label for="latInput" class="form-label">Latitud</label> --}}
-        <input type="hidden" class="form-control" id="latInput" name="lat" value="{{caso.location.coordinates.[0]}}">
-    </div>
+        <div class="mb-3">
+            {{!-- <label for="lngInput" class="form-label">Longitud</label> --}}
+            <input type="hidden" class="form-control" id="lngInput" name="lng"
+                value="{{caso.location.coordinates.[1]}}">
+        </div>
 
-    <div class="mb-3">
-        {{!-- <label for="lngInput" class="form-label">Longitud</label> --}}
-        <input type="hidden" class="form-control" id="lngInput" name="lng" value="{{caso.location.coordinates.[1]}}">
-    </div>
+        <div class="mb-3">
+            {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
+            <input type="hidden" class="form-control" id="creatorId" name="creator" value="{{caso.creator}}">
+        </div>
 
-    <div class="mb-3">
-        {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
-        <input type="text" class="form-control" id="creatorId" name="creator" value="{{caso.creator}}">
-    </div>
+        {{!-- SI TIENE COMENTARIOS DESHABILITADOS --}}
 
-    <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-dark block">Editar caso</button>
-    </div>
+        {{#if disableComments}}
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="enableComments" value="on" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                ¿Te gustaría recibir comentarios?
+            </label>
+        </div>
+        {{/if}}
 
-</form>
+        {{!-- SI TIENE COMENTARIOS HABILITADOS --}}
+        {{#if includesComments}}
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="enableComments" value="off" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                ¿Te gustaría deshabilitar comentarios?
+            </label>
+        </div>
+
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-dark block">Editar caso</button>
+        </div>
+        {{/if}}
+
+    </form>
+</div>
 
 
 {{!--

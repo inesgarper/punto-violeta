@@ -22,8 +22,23 @@
             <a class="btn btn-dark" style="background-color: #e6d412;" href="/usuario/{{id}}/{{caso._id}}/editar"
                 class="btn-dark">Editar caso</a>
 
+
+
+
+            {{else isEditor}}
+
+
+            <form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
+                <button class="btn btn-dark" style="background-color: #f05811;">Eliminar caso</button>
+            </form>
+
+            <a class="btn btn-dark" style="background-color: #e6d412;" href="/usuario/{{id}}/{{caso._id}}/editar"
+                class="btn-dark">Editar caso</a>
+
             {{/if}}
-            n
+
+
+
             <div class="container" id="comments">
 
                 {{#if disableComments}}
@@ -47,24 +62,34 @@
 
                     <ul class="list-group">
 
-                        {{#each caso.comments}}
-                        <li class="list-group-item">{{this.content}}
-                            <p class="postedBy"> <strong>{{this.creator.username}}</strong> </p>
+
+                        {{#each comments}}
+                        <li class="list-group-item">{{this.comment.content}}
+                            <p class="postedBy"> <strong>{{this.comment.creator.username}}</strong> </p>
 
 
-                            {{#if ../isOwner}}
-                            <p>{{this.creator._id}} Eiiii rula</p>
-                            {{/if}}
+
 
                             {{#if ../isEditor}}
 
 
 
-                            <form action="/usuario/{{this._id}}/eliminar-comentario" method="POST">
+                            <form action="/usuario/{{this.comment._id}}/eliminar-comentario" method="POST">
                                 <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
                             </form>
 
                             {{/if}}
+
+
+                            {{#if this.isOwned}}
+
+
+                            <form action="/usuario/{{this.comment._id}}/eliminar-comentario" method="POST">
+                                <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
+                            </form>
+
+                            {{/if}}
+
 
 
                         </li>

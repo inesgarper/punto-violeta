@@ -25,6 +25,7 @@
 | POST       	| `/cerrar-sesion`         	| Log-out        	| | 
 | GET         	| `/usuario/:id`             	| User profile & User edit form 	| | 
 | POST         	| `/usuario/:id/editar`         | User edit form POST       	| | 
+| POST         	| `/usuario/:id/eliminar`         | User DELETE form POST       	| | 
 | GET         	| `/mapa`             	| New case    	| | 
 | POST         	| `/usuario/:id/crear-caso`     	| New case    	| | 
 | GET      	| `/usuario/:id/:casoId`     	| Case details  | | 

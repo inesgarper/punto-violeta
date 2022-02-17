@@ -41,8 +41,7 @@ router.get('/:id/:casoId', isLoggedIn, (req, res, next) => {
 
     const isSelf = userIsSelf(req.session.currentUser._id, id)
     const isEditor = userIsEditor(req.session.currentUser)
-    
-    console.log('usuario',req.session.currentUser._id)
+
 
     Case
         .findById(casoId)
@@ -54,17 +53,25 @@ router.get('/:id/:casoId', isLoggedIn, (req, res, next) => {
             ]
         })
         .then(caso => {
+
+            const comments = caso.comments.map(comment => {
+                return {
+                    comment,
+                    isOwned: comment.creator._id == req.session.currentUser._id
+                }
+            })
+
             res.render('case', {
                 id,
                 caso,
                 isSelf,
                 isEditor,
+                comments,
                 user: req.session.currentUser,
                 includesComments: commentsAreEnable(caso),
-                disableComments: commentsAreDisable(caso),
-                isOwner: commentIsOwner(caso, req.session.currentUser._id),
-                
+                disableComments: commentsAreDisable(caso)
             })
+
         })
         .catch(err => console.log(err))
 })
@@ -74,15 +81,24 @@ router.get('/:id/:casoId/editar', isLoggedIn, (req, res, next) => {
 
     const { id, casoId } = req.params
 
+
+
     Case
         .findById(casoId)
-        .then(caso => res.render('edit-case', { id, caso }))
+        .then(caso => {
+            res.render('edit-case', {
+                id,
+                caso,
+                includesComments: commentsAreEnable(caso),
+                disableComments: commentsAreDisable(caso)
+            })
+        })
         .catch(err => console.log(err))
 })
 
 router.post('/:id/:casoId/editar', (req, res, next) => {
 
-    const { lat, lng, description, creator } = req.body
+    const { lat, lng, description, creator, enableComments } = req.body
     const { casoId } = req.params
 
     const location = {
@@ -91,7 +107,7 @@ router.post('/:id/:casoId/editar', (req, res, next) => {
     }
 
     Case
-        .findByIdAndUpdate(casoId, { creator, description, location })
+        .findByIdAndUpdate(casoId, { creator, description, location, enableComments })
         .then(() => res.redirect('/mapa'))
         .catch(err => console.log(err))
 })

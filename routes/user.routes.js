@@ -5,7 +5,7 @@ const User = require("../models/User.model")
 const Event = require("../models/Event.model")
 
 const { isLoggedIn } = require("../middleware/route-guard")
-const { userIsSelf, userIsEditor } = require("../utils")
+const { userIsSelf, userIsEditor, userIsAdmin } = require("../utils")
 
 // --- USER PROFILE & EDIT USER (GET)
 router.get('/:id', isLoggedIn, (req, res, next) => {
@@ -14,17 +14,22 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
 
     const user = req.session.currentUser
     const isEditor = userIsEditor(user)
-    const isSelf = userIsSelf(id, req.session.currentUser._id)
+    const isSelf = userIsSelf(id, user._id)
+    const isAdmin = userIsAdmin(user)
+
+    // console.log(isAdmin)
 
     if (!isSelf) {
         res.redirect('back')
         return
     }
 
-    const promises = [Case.find({ creator: id }).populate('creator'), User.findById(id).populate('events'), Event.find()]
+    const promises = [Case.find({ creator: id }).populate('creator'),
+     User.findById(id).populate('events'), Event.find(), User.find()]
 
     Promise.all(promises)
-        .then(([allUserCases, user, allEvents]) => res.render('user/panel', { allUserCases, user, isEditor, allEvents }))
+        .then(([allUserCases, user, allEvents, allUsers]) =>
+         res.render('user/panel', { allUserCases, user, isEditor, allEvents, isAdmin, allUsers}))
         .catch(err => console.log(err))
 })
 
@@ -39,7 +44,7 @@ router.post('/:id/editar', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-module.exports = router
+
 
 // -- DELETE USER ----- PENDIENTE HASTA TENER PANEL DEL ADMINISTRADOR
 router.post('/:id/eliminar', (req, res, next) => {
@@ -48,6 +53,8 @@ router.post('/:id/eliminar', (req, res, next) => {
 
     User
         .findByIdAndDelete(id)
-        .then(() => res.redirect('/'))
+        .then(() => res.redirect('back'))
         .catch(err => console.log(err))
 })
+
+module.exports = router
