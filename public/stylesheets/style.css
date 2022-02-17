@@ -20,10 +20,10 @@ nav .btn:hover {
   color: rgb(134, 134, 134)
 }
 
-h1, h2{
+h1, h2, h3{
   
   font-family: 'DM Serif Display', serif;
-  color: #1c1f23
+  color: #211e28
 }
 
 /* ---- LANDING */
@@ -35,6 +35,17 @@ h1, h2{
   align-items: center;
   background-image: url('/images/5418111.jpg');
   background-size: cover;
+}
+/* ---- LOG-IN Sign-in*/
+
+.log-in{
+  margin-top: 40px;
+  text-align: center;
+}
+
+.register{
+  margin-top: 40px;
+  text-align: center;
 }
 
 /* ---- MAPS & CREATE CASES */
@@ -201,13 +212,15 @@ h1, h2{
   border: none;
   margin: 5px;
   width: 150px;
+  
 }
 
 .btn-check:focus+.btn-dark, .btn-dark:focus {
     color: #fff;
     background-color: #1c1f23;
     border-color: #1a1e21;
-    box-shadow: none
+    box-shadow: none;
+    margin: 4px;
 }
 
 .btnNav{
@@ -226,5 +239,29 @@ h1, h2{
 .case {
   padding: 20px;
   margin: 10px;
+}
+
+
+/* ---- Panel */
+
+.center-panel {
+  text-align: center;
+ align-items: center;
+
+}
+
+.title {
+  margin: 20px;
+}
+.mycasesPanel {
+  margin-top: -55px ;
+}
+
+.myEventsPanel{
+  margin-top: 20px;
+}
+
+.cancel-btn{
+  margin-top: 4px;
 }
 
