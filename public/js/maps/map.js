@@ -6,6 +6,7 @@ function initMap() {
     getCases()
     selectPointer()
     pointerLocation()
+    //getCoords()
 }
 
 function drawMap() {
@@ -99,7 +100,20 @@ function printCasesMarkers(cases) {
                 shouldFocus: false,
             })
         })
+        
+        let  heatMapData = [{
+            location: 
+                new google.maps.LatLng(
+                    elm.location.coordinates[0],
+                    elm.location.coordinates[1]), 
+                    weight: 3
+            }]
+        
+        const heatmap = new google.maps.visualization.HeatmapLayer({
+                        data: heatMapData
+        })
 
+        heatmap.setMap(map)
     })
 
 
@@ -122,3 +136,4 @@ function centerMap(geolocationDetails) {
 
     new Marker({ map, position })
 }
+

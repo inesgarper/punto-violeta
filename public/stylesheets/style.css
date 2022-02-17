@@ -83,3 +83,39 @@ h1 {
   display: flex;
   flex-direction: column;
 }
+
+.panelDiv{
+  margin-top: 40px;
+}
+
+.btn{
+  border: none;
+  margin: 5px;
+  width: 100px;
+  
+}
+.btn-check:focus+.btn-dark, .btn-dark:focus {
+    color: #fff;
+    background-color: #1c1f23;
+    border-color: #1a1e21;
+    box-shadow: none
+}
+
+.btnNav{
+  width: 150px;
+}
+
+.eventList .btn{
+  width: 200px;
+  display: inline;
+}
+
+.eventList {
+  display: flex;
+}
+
+.case {
+  padding: 20px;
+  margin: 10px;
+}
+

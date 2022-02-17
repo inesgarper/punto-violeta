@@ -2,7 +2,7 @@
 
     <div class="row">
 
-        <div class="col-4">
+        <div class="col-5 panelDiv">
             <p>Panel de:
             <h4>{{user.username}}</h4>
             </p>
@@ -20,55 +20,60 @@
 
             {{/if}}
 
-            <h2> MIS CASOS </h2>
+            <h3> Mis Casos </h3>
 
-            <ul class="userCases list-group">
+            <section>
 
                 {{#each allUserCases}}
-                <li class="group-items">{{description}} <a href="/usuario/{{creator._id}}/{{_id}}"
-                        class="btn btn-sm btn-dark">Detalle</a>
-                </li>
+                <div class="card case" style="width: 18rem;">
+                    {{description}} <a href="/usuario/{{creator._id}}/{{_id}}" class="btn btn-sm btn-dark">Detalle</a>
+                </div>
                 {{/each}}
 
-            </ul>
+            </section>
+
+
+        </div>
+        <div class="col-5 panelDiv">
 
             <button id="edit-user-btn" class="btn btn-sm btn-dark" style="background-color: #7859d3">Editar
                 Perfil</button>
+
+            <form id="edit-form" class="editUser-off" action="/usuario/{{user._id}}/editar" method="POST">
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Dirección de email</label>
+                    <input type="email" class="form-control" id="emailInput" name="email">
+                </div>
+
+                <div class="mb-3">
+                    <label for="usernameInput" class="form-label">Nombre de usuario</label>
+                    <input type="text" class="form-control" id="usernameInput" name="username">
+                </div>
+
+                <div class="mb-3">
+                    <label for="idInput" class="form-label"></label>
+                    <input type="hidden" class="form-control" id="idInput" name="id" value="{{user._id}}">
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-dark block">Actualizar datos</button>
+                </div>
+
+            </form>
+
         </div>
 
-        <form id="edit-form" class="editUser-off" action="/usuario/{{user._id}}/editar" method="POST">
-            <div class="mb-3">
-                <label for="emailInput" class="form-label">Dirección de email</label>
-                <input type="email" class="form-control" id="emailInput" name="email">
-            </div>
 
-            <div class="mb-3">
-                <label for="usernameInput" class="form-label">Nombre de usuario</label>
-                <input type="text" class="form-control" id="usernameInput" name="username">
-            </div>
+        <div class="col-5">
+            <h3>EVENTOS A LOS QUE ASISTIRÉ</h3>
 
-            <div class="mb-3">
-                <label for="idInput" class="form-label"></label>
-                <input type="hidden" class="form-control" id="idInput" name="id" value="{{user._id}}">
-            </div>
-
-            <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-dark block">Actualizar datos</button>
-            </div>
-
-        </form>
-
-        <h3>EVENTOS A LOS QUE ASISTIRÉ</h3>
-
-        <div class="container">
-
-            <ul class="list-group">
+            <ul class="list-group eventsList">
 
                 {{#each user.events}}
-                <li class="list-group-item eventList"> <strong>{{title}}</strong>
+                <li class="list-group-item eventList"> <h6><strong>{{title}}</strong></h6>
 
                     <article>
-                        <p>{{description}}</p>
+                        
                         <div>
                             <a class="btn btn-success" href="{{location.URL}}">Cómo Llegar</a>
                             <form action="/eventos/{{id}}/desunirse" method="POST">
@@ -85,32 +90,35 @@
         </div>
 
 
+        <div class="col-5">
 
-        {{#if isEditor}}
+            {{#if isEditor}}
 
-        <h2>LISTA DE EVENTOS</h2>
+            <h2>LISTA DE EVENTOS</h2>
 
-        <div class="container">
+            <div class="container">
 
-            <ul class="list-group">
-                {{#each allEvents}}
-                <li class="list-group-item">
-                    <h5>{{title}}</h5>
+                <ul class="list-group eventList">
+                    {{#each allEvents}}
+                    <li class="list-group-item">
+                        <h5>{{title}}</h5>
 
-                    <form action="/eventos/{{id}}/eliminar" method="POST">
-                        <button class="btn btn-danger">Eliminar evento</button>
-                    </form>
-                    <a href="/eventos/{{id}}/editar" class="btn btn-info">Editar este EVENTO</a>
-                </li>
-                {{/each}}
-            </ul>
+                        <form action="/eventos/{{id}}/eliminar" method="POST">
+                            <button class="btn btn-danger">Eliminar evento</button>
+                        </form>
+                        <a href="/eventos/{{id}}/editar" class="btn btn-info">Editar este EVENTO</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+
+
+            <a href="/eventos/crear" id="edit-user-btn" class="btn btn-sm btn-dark"
+                style="background-color: #7859d3">Crear
+                Evento</a>
+
+            {{/if}}
         </div>
-
-
-        <a href="/eventos/crear" id="edit-user-btn" class="btn btn-sm btn-dark" style="background-color: #7859d3">Crear
-            Evento</a>
-
-        {{/if}}
 
 
 
