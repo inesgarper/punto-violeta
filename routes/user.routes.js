@@ -2,6 +2,7 @@ const router = require("express").Router()
 
 const Case = require("../models/Case.model")
 const User = require("../models/User.model")
+const Event = require("../models/Event.model")
 
 const { isLoggedIn } = require("../middleware/route-guard")
 const { userIsSelf, userIsEditor } = require("../utils")
@@ -20,10 +21,10 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
         return
     }
 
-    const promises = [Case.find({ creator: id }).populate('creator'), User.findById(id).populate('events')]
+    const promises = [Case.find({ creator: id }).populate('creator'), User.findById(id).populate('events'), Event.find()]
 
     Promise.all(promises)
-        .then(([allUserCases, user]) => res.render('user/panel', { allUserCases, user, isEditor }))
+        .then(([allUserCases, user, allEvents]) => res.render('user/panel', { allUserCases, user, isEditor, allEvents }))
         .catch(err => console.log(err))
 })
 
@@ -39,3 +40,14 @@ router.post('/:id/editar', (req, res, next) => {
 })
 
 module.exports = router
+
+// -- DELETE USER ----- PENDIENTE HASTA TENER PANEL DEL ADMINISTRADOR
+router.post('/:id/eliminar', (req, res, next) => {
+
+    const { id } = req.params
+
+    User
+        .findByIdAndDelete(id)
+        .then(() => res.redirect('/'))
+        .catch(err => console.log(err))
+})
