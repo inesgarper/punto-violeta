@@ -53,7 +53,7 @@ router.get('/:id', (req, res, next) => {
     Promise.all(promises)
         .then(([theEvent, assistants]) => {
             console.log(assistants)
-            res.render('events/details', { theEvent, assistants })
+            res.render('events/details', { theEvent, assistants, user: req.session.currentUser })
         })
         .catch(err => console.log(err))
 })

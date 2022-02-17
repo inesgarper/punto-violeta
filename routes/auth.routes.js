@@ -38,7 +38,7 @@ router.post('/iniciar-sesion', (req, res, next) => {
                 return
             } else {
                 req.session.currentUser = user
-                res.redirect('/')
+                res.redirect('/mapa')
             }
         })
         .catch(error => next(error))
