@@ -13,7 +13,7 @@ router.get('/', isLoggedIn, (req, res, next) => {
 
     Event
         .find()
-        .then(allEvents => res.render('events/allEvents', { allEvents }))
+        .then(allEvents => res.render('events/allEvents', { allEvents, user: req.session.currentUser }))
         .catch(error => next(error))
 })
 

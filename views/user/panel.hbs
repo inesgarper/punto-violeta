@@ -74,18 +74,22 @@
 
                 <h2 class="card-title">LISTA DE EVENTOS</h2>
 
-                <ul class="list-group eventList">
+                <div class="list-group eventList">
                     {{#each allEvents}}
-                    <li class="list-group-item">
-                        <h5>{{title}}</h5>
+                    <div class="row list-group-item aligne-items-center">
+                        <div class="col-3">
+                            <h5>{{title}}</h5>
+                        </div>
 
-                        <form action="/eventos/{{id}}/eliminar" method="POST">
-                            <button class="btn btn-danger">Eliminar evento</button>
-                        </form>
-                        <a href="/eventos/{{id}}/editar" class="btn btn-info">Editar este EVENTO</a>
-                    </li>
+                        <div class="col-3" >
+                            <form class"col-3" action="/eventos/{{id}}/eliminar" method="POST">
+                                <button class="btn btn-danger">Eliminar evento</button>
+                            </form>
+                        </div>
+                        <div class="col-3"><a  href="/eventos/{{id}}/editar" class="btn btn-info">Editar este EVENTO</a></div>
+                    </div>
                     {{/each}}
-                </ul>
+                </div>
 
                 <a href="/eventos/crear" id="edit-user-btn" class="btn boton-center btn-sm btn-dark"
                     style="background-color: #a482b0">Crear
