@@ -22,9 +22,37 @@ h1 {
   color: 15px;
 }
 
+/* ---- LANDING */
+.landing {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/images/5418111.jpg');
+  background-size: cover;
+}
+
+/* ---- MAPS & CREATE CASES */
+
+.map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #myMap, #editMap{
   margin: 20px;
   height: 550px;
+  width: 90%;
+  border-radius: 5px;
+}
+
+.case-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar-text{

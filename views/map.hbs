@@ -1,80 +1,82 @@
-<h1>SOY EL MAPA</h1>
+<section class="map">
 
-<figure id="myMap"></figure>
+    <div class="container">
 
-{{#if user}}
+        <div class="row justify-content-center">
 
+<<<<<<< HEAD
 <div class="map_wrap">
   <div class="siderbarmap">
     
   </div>
   <div id="map" style="width:100%;height:585px; z-index: 1;"></div>
 </div>
+=======
+            <div class="col-md-8">
+                <figure id="myMap"></figure>
+            </div>
 
-<div class="container">
+            <div class="col-md-4 case-form">
+>>>>>>> 75442349b9de3572cd2e23c512e61a2e4850e2c5
 
-    <div class="row justify-content-center">
+                {{#if user}}
 
+                <h1>¿Te gustaría contar tu caso?</h1>
 
+                <p>Pínea la ubicación del suceso en el mapa y cuenta todo lo que quieras sobre él. Siéntete libre.</p>
 
-        <div class="col-md-6">
+                <form action="/usuario/{{id}}/crear-caso" method="POST">
+                    <div class="mb-3">
+                        {{!-- <label for="descriptionInput" class="form-label">Descripción</label> --}}
+                        <textarea type="text" class="form-control" id="descriptionInput" rows="3"
+                            name="description"></textarea>
+                    </div>
 
-            <h1>Crear caso</h1>
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="latInput" name="lat">
+                    </div>
 
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="lngInput" name="lng">
+                    </div>
 
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="creatorId" name="creator" value="{{id}}">
+                    </div>
 
-            <form action="/usuario/{{id}}/crear-caso" method="POST">
-                <div class="mb-3">
-                    <label for="descriptionInput" class="form-label">Descripción</label>
-                    <textarea type="text" class="form-control" id="descriptionInput" rows="3"
-                        name="description"></textarea>
-                </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="enableComments" value="on"
+                            id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Si habilitas esta opción permitirás que otros usuarios te manden mensajes sobre tu caso.
+                        </label>
+                    </div>
 
-                <div class="mb-3">
-                    {{!-- <label for="latInput" class="form-label">Latitud</label> --}}
-                    <input type="hidden" class="form-control" id="latInput" name="lat">
-                </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-dark block">Añadir caso</button>
+                    </div>
+                    {{#if errorMessage}}
 
-                <div class="mb-3">
-                    {{!-- <label for="lngInput" class="form-label">Longitud</label> --}}
-                    <input type="hidden" class="form-control" id="lngInput" name="lng">
-                </div>
+                    <div id="errorMessage">
+                        <h1>{{errorMessage}}</h1>
+                    </div>
 
-                <div class="mb-3">
-                    {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
-                    <input type="hidden" class="form-control" id="creatorId" name="creator" value="{{id}}">
-                </div>
+                    {{/if}}
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="enableComments" value="on"
-                        id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        ¿Te gustaría recibir comentarios?
-                    </label>
-                </div>
-
-                <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-dark block">Añadir caso</button>
-                </div>
-                {{#if errorMessage}}
-
-                <div id="errorMessage">
-                    <h1>{{errorMessage}}</h1>
-                </div>
+                </form>
 
                 {{/if}}
 
-            </form>
-
-
+            </div>
 
         </div>
+
     </div>
 
-</div>
+
+</section>
 
 
-{{/if}}
 
 
 

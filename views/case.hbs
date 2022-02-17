@@ -68,9 +68,6 @@
                             <p class="postedBy"> <strong>{{this.comment.creator.username}}</strong> </p>
 
 
-
-
-
                             {{#if this.isOwned}}
 
 
@@ -78,10 +75,8 @@
                                 <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
                             </form>
 
-                        
 
                             {{else ../isEditor}}
-
 
                             <form action="/usuario/{{this.comment._id}}/eliminar-comentario" method="POST">
                                 <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
