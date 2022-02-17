@@ -1,6 +1,6 @@
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 
 module.exports = app => {
     app.set('trust proxy', 1);
@@ -17,7 +17,7 @@ module.exports = app => {
                 maxAge: 6000000
             },
             store: MongoStore.create({
-                mongoUrl: process.env.MONGODB_URI 
+                mongoUrl: process.env.MONGODB_URI
             })
         })
     );

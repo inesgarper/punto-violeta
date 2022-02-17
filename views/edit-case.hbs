@@ -8,7 +8,8 @@
 <form action="/usuario/{{id}}/{{caso._id}}/editar" method="POST">
     <div class="mb-3">
         <label for="descriptionInput" class="form-label">Descripción</label>
-        <textarea type="text" class="form-control" id="descriptionInput" rows="3" name="description">{{caso.description}}</textarea>
+        <textarea type="text" class="form-control" id="descriptionInput" rows="3"
+            name="description">{{caso.description}}</textarea>
     </div>
 
     <div class="mb-3">
@@ -35,6 +36,6 @@
 
 {{!--
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> --}}
-<script src="/js/mapStyles.js"></script>
-<script src="/js/editMap.js"></script>
+<script src="/js/maps/mapStyles.js"></script>
+<script src="/js/maps/editMap.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initMap"></script>

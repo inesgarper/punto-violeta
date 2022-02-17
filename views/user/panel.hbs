@@ -10,9 +10,10 @@
                 <h5>Sus casos:</h5>
 
                 {{#each allUserCases}}
-                <li class="group-items">{{description}} <a href="/usuario/{{creator._id}}/{{_id}}" class="btn btn-sm btn-dark">Detalle</a>
-                    </li>
-                    {{/each}}
+                <li class="group-items">{{description}} <a href="/usuario/{{creator._id}}/{{_id}}"
+                        class="btn btn-sm btn-dark">Detalle</a>
+                </li>
+                {{/each}}
 
             </ul>
 
@@ -47,17 +48,21 @@
         {{/if}}
 
         <div class="container">
-        
+
             <ul class="list-group">
-                
+
                 {{#each user.events}}
                 <li class="list-group-item"> <strong>{{title}}</strong>
-        
+
                     <article>
                         {{description}}
                         <a class="btn-sm btn-success" href="{{location.URL}}">Cómo Llegar</a>
                     </article>
-        
+
+                    <form action="/eventos/{{id}}/desunirse" method="POST">
+                        <button class="btn btn-warning">Cancelar asistencia</button>
+                    </form>
+
                 </li>
                 {{/each}}
             </ul>
@@ -87,4 +92,4 @@
 
     </div>
 
-    <script src="/js/editProfile.js"></script>
+    <script src="/js/DOM/editProfile.js"></script>

@@ -1,4 +1,4 @@
-const router = require("express").Router();
+const router = require("express").Router()
 const Case = require("../models/Case.model")
 
 router.get("/cases", (req, res, next) => {
@@ -9,4 +9,4 @@ router.get("/cases", (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-module.exports = router;
+module.exports = router

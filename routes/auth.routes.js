@@ -1,12 +1,15 @@
-const router = require("express").Router();
+const router = require("express").Router()
+
 const bcrypt = require('bcryptjs')
-const User = require("../models/User.model")
 const saltRounds = 10
+
+const User = require("../models/User.model")
 
 // --- SING IN ROUTES
 router.get('/registro', (req, res, next) => res.render('auth/sign-in'))
 
 router.post('/registro', (req, res, next) => {
+
     const { password } = req.body
 
     bcrypt
@@ -21,6 +24,7 @@ router.post('/registro', (req, res, next) => {
 router.get('/iniciar-sesion', (req, res, next) => res.render('auth/log-in'))
 
 router.post('/iniciar-sesion', (req, res, next) => {
+
     const { email, password } = req.body
 
     User
@@ -40,10 +44,10 @@ router.post('/iniciar-sesion', (req, res, next) => {
         .catch(error => next(error))
 })
 
-// --- LOG OUT
+// --- LOG OUT ROUTE
 router.post('/cerrar-sesion', (req, res, next) => {
     req.session.destroy(() => res.redirect('/'))
 })
 
 
-module.exports = router;
+module.exports = router

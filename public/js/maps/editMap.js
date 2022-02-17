@@ -23,33 +23,36 @@ function drawMap() {
 
 function selectPointer() {
     google.maps.event.addListener(map, 'click', function (event) {
-       
+
         let clickedLocation = event.latLng;
-      
+
+        const image = 'https://i.ibb.co/sKmTRyw/pointer.png'
+
         if (pointer === false) {
-           
+
             pointer = new google.maps.Marker({
                 position: clickedLocation,
                 map: map,
-                draggable: true 
+                draggable: true,
+                icon: image
             });
-           
+
             google.maps.event.addListener(pointer, 'dragend', function (event) {
                 pointerLocation();
             });
+
         } else {
-            
             pointer.setPosition(clickedLocation);
         }
-    
+
         pointerLocation();
     })
 }
 
-    function pointerLocation() {
-       
-        let currentLocation = pointer.getPosition();
-       
-        document.getElementById('latInput').value = currentLocation.lat(); 
-        document.getElementById('lngInput').value = currentLocation.lng(); 
-    }
+function pointerLocation() {
+
+    let currentLocation = pointer.getPosition();
+
+    document.getElementById('latInput').value = currentLocation.lat();
+    document.getElementById('lngInput').value = currentLocation.lng();
+}

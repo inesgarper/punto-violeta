@@ -1,15 +1,15 @@
-const router = require("express").Router();
+const router = require("express").Router()
 
-const { path } = require("express/lib/application");
-const { isLoggedIn } = require("../middleware/route-guard");
-const Case = require("../models/Case.model");
-// const User = require("../models/User.model");
-const { userIsSelf, userIsEditor, commentsAreAdmitted, commentsAreDisable, isYourCase } = require("../utils");
+const { userIsSelf, userIsEditor, commentsAreEnable, commentsAreDisable } = require("../utils")
+const { isLoggedIn } = require("../middleware/route-guard")
+
+const Case = require("../models/Case.model")
 
 
-// ----------- CREATE CASE POST
+// --- CREATE CASE (POST)
 router.post('/:id/crear-caso', (req, res, next) => {
-    const { lat, lng, description, creator, admitteComments } = req.body
+
+    const { lat, lng, description, creator, enableComments } = req.body
 
     const location = {
         type: 'Point',
@@ -24,23 +24,22 @@ router.post('/:id/crear-caso', (req, res, next) => {
         res.render('map', { errorMessage: 'introduce la localización del suceso', user, id })
         return
     }
+
     Case
-        .create({ creator, description, location, admitteComments })
+        .create({ creator, description, location, enableComments })
         .then(() => res.redirect('/mapa'))
         .catch(err => console.log(err))
 
 })
 
 
-// ---- Case Details
+// ---- CASE DETAILS ROUTE
 router.get('/:id/:casoId', isLoggedIn, (req, res, next) => {
 
     const { id, casoId } = req.params
+
     const isSelf = userIsSelf(req.session.currentUser._id, id)
     const isEditor = userIsEditor(req.session.currentUser)
-
-
-    // console.log('es el mismo', isSelf, 'es editor', isEditor)
 
     Case
         .findById(casoId)
@@ -58,18 +57,16 @@ router.get('/:id/:casoId', isLoggedIn, (req, res, next) => {
                 isSelf,
                 isEditor,
                 user: req.session.currentUser,
-                includesComments: commentsAreAdmitted(caso),
+                includesComments: commentsAreEnable(caso),
                 disableComments: commentsAreDisable(caso),
-                // isYourCase: isYourCase(caso, req.session.currentUser._id)
             })
-            console.log
-        }
-        )
+        })
         .catch(err => console.log(err))
 })
 
-// ------ Edit Case
+// --- EDIT CASE ROUTES
 router.get('/:id/:casoId/editar', isLoggedIn, (req, res, next) => {
+
     const { id, casoId } = req.params
 
     Case
@@ -79,6 +76,7 @@ router.get('/:id/:casoId/editar', isLoggedIn, (req, res, next) => {
 })
 
 router.post('/:id/:casoId/editar', (req, res, next) => {
+
     const { lat, lng, description, creator } = req.body
     const { casoId } = req.params
 
@@ -93,8 +91,9 @@ router.post('/:id/:casoId/editar', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-// ------- Delete Case
+// --- DELETE CASE
 router.post('/:id/:casoId/eliminar', (req, res, next) => {
+
     const { id, casoId } = req.params
 
     Case
@@ -104,4 +103,4 @@ router.post('/:id/:casoId/eliminar', (req, res, next) => {
 })
 
 
-module.exports = router;
+module.exports = router

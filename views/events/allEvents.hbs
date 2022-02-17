@@ -10,12 +10,7 @@
 
     <li class="list-group"> {{title}}</li>
     <form id="join-form" action="/eventos/{{id}}/unirse" method="POST">
-        {{!-- <input type="text" name="eventId" value="{{id}}"> --}}
         <button id="btn-join" class="btn btn-dark" style="background-color: #7859d3">Unirme al evento</button>
-    </form>
-
-    <form action="/eventos/{{id}}/desunirse" method="POST">
-        <button class="btn btn-warning">Desunirme al evento</button>
     </form>
 
     {{#if ../isEditor}}
@@ -32,6 +27,7 @@
     {{/each}}
 
 </ul>
+
 
 {{!--
 <script src="/js/joinButton.js"></script> --}}

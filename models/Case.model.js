@@ -21,7 +21,7 @@ const caseSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Comment',
     }],
-    admitteComments: {
+    enableComments: {
       type: String,
       enum: ['on', 'off'],
       default: 'off'

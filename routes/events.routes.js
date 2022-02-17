@@ -1,26 +1,25 @@
-const router = require("express").Router();
+const router = require("express").Router()
 
-const User = require("../models/User.model");
+const User = require("../models/User.model")
 const Event = require("../models/Event.model")
 
-const { isLoggedIn } = require("../middleware/route-guard");
-const { userIsSelf, userIsEditor } = require("../utils");
+const { isLoggedIn } = require("../middleware/route-guard")
+const { userIsEditor } = require("../utils")
 
 
-// ------- All Events List
+// --- EVENTS LIST ROUTE
 router.get('/', isLoggedIn, (req, res, next) => {
 
     const user = req.session.currentUser
     const isEditor = userIsEditor(user)
-    console.log(isEditor)
 
     Event
         .find()
-        .then(allEvents => res.render('events/allEvents', { allEvents, user:req.session.currentUser }))
+        .then(allEvents => res.render('events/allEvents', { allEvents, user: req.session.currentUser, isEditor }))
         .catch(error => next(error))
 })
 
-// ------- Create events
+// --- CREATE EVENTS ROUTES
 router.get('/crear', isLoggedIn, (req, res, next) => {
 
     const userId = req.session.currentUser._id
@@ -29,6 +28,7 @@ router.get('/crear', isLoggedIn, (req, res, next) => {
 })
 
 router.post('/crear', (req, res, next) => {
+
     const { title, type, description, address, URL, start, end, creator, eventImg } = req.body
 
     const location = {
@@ -42,8 +42,7 @@ router.post('/crear', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-// ----------Join Event
-
+// --- JOIN EVENT ROUTE
 router.post('/:id/unirse', isLoggedIn, (req, res, next) => {
 
     const userId = req.session.currentUser._id
@@ -55,8 +54,7 @@ router.post('/:id/unirse', isLoggedIn, (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-// ------Unjoin Event
-
+// --- UNJOIN EVENT ROUTE
 router.post('/:id/desunirse', isLoggedIn, (req, res, next) => {
 
     const userId = req.session.currentUser._id
@@ -68,8 +66,7 @@ router.post('/:id/desunirse', isLoggedIn, (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-// ------ Delete Events
-
+// --- DELETE EVENT ROUTE
 router.post('/:id/eliminar', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
@@ -80,13 +77,12 @@ router.post('/:id/eliminar', isLoggedIn, (req, res, next) => {
     Promise.all(promises)
         .then(() => res.redirect('/eventos'))
         .catch(err => console.log(err))
-
 })
 
 
-// ------- Edit Events 
-
+// --- EDIT EVENT ROUTES
 router.get('/:id/editar', isLoggedIn, (req, res, next) => {
+
     const { id } = req.params
 
     Event
@@ -96,8 +92,8 @@ router.get('/:id/editar', isLoggedIn, (req, res, next) => {
 })
 
 router.post('/:id/editar', isLoggedIn, (req, res, next) => {
-    const { id } = req.params
 
+    const { id } = req.params
     const { title, type, description, address, URL, start, end, creator, eventImg } = req.body
 
     const location = {
@@ -111,5 +107,4 @@ router.post('/:id/editar', isLoggedIn, (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-
-module.exports = router;
+module.exports = router

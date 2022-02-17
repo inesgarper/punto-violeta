@@ -3,7 +3,7 @@ module.exports = {
     userIsEditor: user => user.role === 'EDITOR',
     userIsAdmin: user => user.role === 'ADMIN',
     userIsSelf: (user, loggedId) => user === loggedId,
-    commentsAreAdmitted: caso => caso.admitteComments === 'on',
-    commentsAreDisable: caso => caso.admitteComments === 'off',
-    isYourCase: (caso, idCurrentUser) => caso.creator === idCurrentUser
+
+    commentsAreEnable: caso => caso.enableComments === 'on',
+    commentsAreDisable: caso => caso.enableComments === 'off',
 }

@@ -1,22 +1,23 @@
-const router = require("express").Router();
-const { isLoggedIn } = require("../middleware/route-guard");
+const router = require("express").Router()
+
+const { isLoggedIn } = require("../middleware/route-guard")
 
 
-/* GET home page - landing*/
-router.get("/",  (req, res, next) => {
+// --- LANDING ROUTE
+router.get("/", (req, res, next) => {
 
-    const user = req.session.currentUser
+  const user = req.session.currentUser
 
-    if (!user) {
-      res.render('index')
+  if (!user) {
+    res.render('index')
 
-    } else {
-      const id = req.session.currentUser._id
-      res.render("index", { id, user: req.session.currentUser })
-    }
+  } else {
+    const id = req.session.currentUser._id
+    res.render("index", { id, user: req.session.currentUser })
+  }
 })
 
-// ---- MAP and Case Form
+// ---- MAP & CREATE CASE (GET)
 router.get("/mapa", (req, res, next) => {
 
   const user = req.session.currentUser
@@ -28,8 +29,6 @@ router.get("/mapa", (req, res, next) => {
     const id = req.session.currentUser._id
     res.render("map", { id, user: req.session.currentUser })
   }
-
-
 })
 
-module.exports = router;
+module.exports = router
