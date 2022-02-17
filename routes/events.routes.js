@@ -103,7 +103,7 @@ router.post('/:id/editar', isLoggedIn, (req, res, next) => {
 
     Event
         .findByIdAndUpdate(id, { title, type, description, location, start, end, creator, eventImg })
-        .then(() => res.redirect('events/allEvents'))
+        .then(() => res.redirect('back'))
         .catch(err => console.log(err))
 })
 
