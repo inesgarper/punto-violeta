@@ -1,9 +1,10 @@
 const router = require("express").Router()
 
-const { userIsSelf, userIsEditor, commentsAreEnable, commentsAreDisable } = require("../utils")
+const { userIsSelf, userIsEditor, commentsAreEnable, commentsAreDisable, commentIsOwner } = require("../utils")
 const { isLoggedIn } = require("../middleware/route-guard")
 
 const Case = require("../models/Case.model")
+const { find } = require("../models/Case.model")
 
 
 // --- CREATE CASE (POST)
@@ -40,6 +41,8 @@ router.get('/:id/:casoId', isLoggedIn, (req, res, next) => {
 
     const isSelf = userIsSelf(req.session.currentUser._id, id)
     const isEditor = userIsEditor(req.session.currentUser)
+    
+    console.log('usuario',req.session.currentUser._id)
 
     Case
         .findById(casoId)
@@ -59,6 +62,8 @@ router.get('/:id/:casoId', isLoggedIn, (req, res, next) => {
                 user: req.session.currentUser,
                 includesComments: commentsAreEnable(caso),
                 disableComments: commentsAreDisable(caso),
+                isOwner: commentIsOwner(caso, req.session.currentUser._id),
+                
             })
         })
         .catch(err => console.log(err))

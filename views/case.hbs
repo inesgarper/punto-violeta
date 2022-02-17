@@ -51,7 +51,14 @@
                         <li class="list-group-item">{{this.content}}
                             <p class="postedBy"> <strong>{{this.creator.username}}</strong> </p>
 
+
+                            {{#if ../isOwner}}
+                            <p>{{this.creator._id}} Eiiii rula</p>
+                            {{/if}}
+
                             {{#if ../isEditor}}
+
+
 
                             <form action="/usuario/{{this._id}}/eliminar-comentario" method="POST">
                                 <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>

@@ -4,6 +4,8 @@ module.exports = {
     userIsAdmin: user => user.role === 'ADMIN',
     userIsSelf: (user, loggedId) => user === loggedId,
 
+    commentIsOwner: (caso, loggedIn) => caso.comments[0].creator._id=== loggedIn,
+
     commentsAreEnable: caso => caso.enableComments === 'on',
     commentsAreDisable: caso => caso.enableComments === 'off',
 }
