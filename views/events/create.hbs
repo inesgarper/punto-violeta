@@ -26,13 +26,13 @@
             </div>
 
             <div class="mb-3">
-                {{!-- <label for="latInput" class="form-label">Latitud</label> --}}
-                <input type="date" class="form-control" id="start" name="start">
+                <label for="dateInput" class="form-label">Fecha:</label>
+                <input type="date" class="form-control" id="date" name="date">
             </div>
 
             <div class="mb-3">
-                {{!-- <label for="lngInput" class="form-label">Longitud</label> --}}
-                <input type="date" class="form-control" id="end" name="end">
+                <label for="startTimeInput" class="form-label">Hora de inicio:</label>
+                <input type="time" class="form-control" id="startTime" name="startTime">
             </div>
 
             <div class="mb-3">
@@ -42,15 +42,13 @@
 
             <div class="mb-3">
                 {{!-- <label for="lngInput" class="form-label">URL a google maps</label> --}}
-                <input type="text" class="form-control" id="mapsURL" name="URL">
+                <input type="hidden" class="form-control" id="mapsURL" name="URL">
             </div>
 
             <div class="mb-3">
                 {{!-- <label for="lngInput" class="form-label">Dirección</label> --}}
-                <input type="text" class="form-control" id="address" name="address">
+                <input type="hidden" class="form-control" id="address" name="address">
             </div>
-
-
 
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-dark block">Añadir Evento</button>
@@ -71,4 +69,4 @@
 
 <script src="/js/maps/autoComplete.js"></script>
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=_______TU_____API______KEY_____&callback=initAutocomplete&libraries=places"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi1_pFt2aNH7iIISEYWGm8FqYqnM1xs7w&callback=initAutocomplete&libraries=places"></script>

@@ -2,9 +2,11 @@
 
 <div class="row">
 
+    <p>{{id}}</p>
+
     <div class="col-5">
         <h4>EDITAR EVENTO</h4>
-        <form action="/eventos/:id/editar" method="POST">
+        <form action="/eventos/{{id}}/editar" method="POST">
 
             <div class="mb-3">
                 <label for="titleInput" class="form-label">Título del evento:</label>
@@ -29,28 +31,25 @@
                     </div>
 
                     <div class="mb-3">
-                        {{!-- <label for="latInput" class="form-label">Latitud</label> --}}
-                        <input type="date" class="form-control" id="start" name="start" value="{{start}}">
+                        <label for="dateInput" class="form-label">Fecha:</label>
+                        <input type="date" class="form-control" id="start" name="date" value="{{date}}">
                     </div>
 
                     <div class="mb-3">
-                        {{!-- <label for="lngInput" class="form-label">Longitud</label> --}}
-                        <input type="date" class="form-control" id="end" name="end" value="{{end}}">
+                        <label for="startTimeInput" class="form-label">Hora de inicio:</label>
+                        <input type="time" class="form-control" id="startTime" name="startTime" value="{{startTime}}">
                     </div>
 
-                    <div class="mb-3">
-                        {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
+                    {{!-- <div class="mb-3">
                         <input type="hidden" class="form-control" id="creatorId" name="creator" value="{{id}}">
+                    </div> --}}
+
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="mapsURL" name="url" value="{{location.URL}}">
                     </div>
 
                     <div class="mb-3">
-                        {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
-                        <input type="text" class="form-control" id="mapsURL" name="url" value="{{location.URL}}">
-                    </div>
-
-                    <div class="mb-3">
-                        {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
-                        <input type="text" class="form-control" id="address" name="address"
+                        <input type="hidden" class="form-control" id="address" name="address"
                             value="{{location.address}}">
                     </div>
 
@@ -68,4 +67,4 @@
 
 <script src="/js/maps/autoComplete.js"></script>
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=____TU_API_KEY______&callback=initAutocomplete&libraries=places"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi1_pFt2aNH7iIISEYWGm8FqYqnM1xs7w&callback=initAutocomplete&libraries=places"></script>

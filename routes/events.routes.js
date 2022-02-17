@@ -29,7 +29,7 @@ router.get('/crear', isLoggedIn, (req, res, next) => {
 
 router.post('/crear', (req, res, next) => {
 
-    const { title, type, description, address, URL, start, end, creator, eventImg } = req.body
+    const { title, type, description, address, URL, startTime, date, creator, eventImg } = req.body
 
     const location = {
         address: address,
@@ -37,8 +37,24 @@ router.post('/crear', (req, res, next) => {
     }
 
     Event
-        .create({ title, type, description, location, start, end, creator, eventImg })
+        .create({ title, type, description, location, startTime, date, creator, eventImg })
         .then(() => res.redirect('/eventos'))
+        .catch(err => console.log(err))
+})
+
+// --- EVENT DETAILS ROUTE 
+router.get('/:id', (req, res, next) => {
+
+    const { id } = req.params
+    console.log(id)
+
+    const promises = [Event.findById(id), User.find({ events: id }).populate('events')]
+
+    Promise.all(promises)
+        .then(([theEvent, assistants]) => {
+            console.log(assistants)
+            res.render('events/details', { theEvent, assistants })
+        })
         .catch(err => console.log(err))
 })
 
@@ -94,7 +110,9 @@ router.get('/:id/editar', isLoggedIn, (req, res, next) => {
 router.post('/:id/editar', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
-    const { title, type, description, address, URL, start, end, creator, eventImg } = req.body
+    const { title, type, description, address, URL, startTime, date, eventImg } = req.body
+
+    console.log(id)
 
     const location = {
         address: address,
@@ -102,7 +120,7 @@ router.post('/:id/editar', isLoggedIn, (req, res, next) => {
     }
 
     Event
-        .findByIdAndUpdate(id, { title, type, description, location, start, end, creator, eventImg })
+        .findByIdAndUpdate(id, { title, type, description, location, startTime, date, eventImg })
         .then(() => res.redirect('back'))
         .catch(err => console.log(err))
 })

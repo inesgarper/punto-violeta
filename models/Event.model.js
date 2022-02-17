@@ -16,14 +16,14 @@ const eventSchema = new Schema(
       required: [true, 'Informa sobre el evento'],
     },
     location: {
-      address: String, 
+      address: String,
       URL: String,
     },
-    start: {
-      date: Date
+    date: {
+      type: Date
     },
-    end: {
-      date: Date
+    startTime: {
+      type: String,
     },
     creator: {
       type: Schema.Types.ObjectId,
