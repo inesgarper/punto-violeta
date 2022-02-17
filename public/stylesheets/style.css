@@ -49,11 +49,20 @@ h1 {
 }
 
 .case-form {
+  margin: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+.case-form button {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+/* ---- NAV BAR */
 
 .navbar-text{
   margin-left: auto;
@@ -119,9 +128,9 @@ h1 {
 .btn{
   border: none;
   margin: 5px;
-  width: 100px;
-  
+  width: 150px;
 }
+
 .btn-check:focus+.btn-dark, .btn-dark:focus {
     color: #fff;
     background-color: #1c1f23;
