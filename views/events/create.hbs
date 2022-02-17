@@ -2,7 +2,7 @@
 
     <div class="col-5">
         <h5>CREAR EVENTO</h5>
-        <form action="/eventos/crear" method="POST">
+        <form action="/eventos/crear" method="POST" enctype="multipart/form-data">
 
             <div class="mb-3">
                 <label for="titleInput" class="form-label">Título del evento:</label>
@@ -24,6 +24,12 @@
                 <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"
                     class="form-control">
             </div>
+
+            <div class="mb-3">
+                <label for="dateInput" class="form-label">Imagen</label>
+                <input type="file" class="form-control" id="date" name="eventImg">
+            </div>
+
 
             <div class="mb-3">
                 <label for="dateInput" class="form-label">Fecha:</label>

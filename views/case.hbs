@@ -4,31 +4,35 @@
         <div class="card-header">
             Caso de {{caso.creator.username}}
         </div>
-        <div class="card-body">
+        <div class="card-header">
             <h5 class="card-title">{{caso.description}}</h5>
 
             {{#if isSelf}}
 
-            <form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
-                <button class="btn btn-dark" style="background-color: #f05811;">Eliminar caso</button>
-            </form>
+            <div class="case-details-buttons">
+                <form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
+                    <button class="btn btn-dark" style="background-color: #f05811;">Eliminar caso</button>
+                </form>
 
-            <a class="btn btn-dark" style="background-color: #e6d412;" href="/usuario/{{id}}/{{caso._id}}/editar"
-                class="btn-dark">Editar caso</a>
+                <a class="btn btn-dark" style="background-color: #e6d412;" href="/usuario/{{id}}/{{caso._id}}/editar"
+                    class="btn-dark">Editar caso</a>
+            </div>
 
             {{else isEditor}}
 
-            <form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
-                <button class="btn btn-dark" style="background-color: #f05811;">Eliminar caso</button>
-            </form>
+            <div class="case-details-buttons">
+                <form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
+                    <button class="btn btn-dark" style="background-color: #f05811;">Eliminar caso</button>
+                </form>
 
-            <a class="btn btn-dark" style="background-color: #e6d412;" href="/usuario/{{id}}/{{caso._id}}/editar"
-                class="btn-dark">Editar caso</a>
+                <a class="btn btn-dark" style="background-color: #e6d412;" href="/usuario/{{id}}/{{caso._id}}/editar"
+                    class="btn-dark">Editar caso</a>
+            </div>
 
             {{/if}}
+        </div>
 
-            <hr>
-
+        <div class="card-body">
 
             <h5 class="card-title comments">Comentarios</h5>
 
@@ -43,17 +47,18 @@
             <ul class="list-group">
 
                 {{#each comments}}
-                <li class="list-group-item">{{this.comment.content}}
-                    <p class="postedBy"> <strong>{{this.comment.creator.username}}</strong> </p>
+                <li class="list-group-item">
 
+                    <div class="comment-details">
+                        <p class="postedBy">Comentario de {{this.comment.creator.username}}</p>
+                        <p><strong>{{this.comment.content}}</strong></p>
+                    </div>
 
                     {{#if this.isOwned}}
-
 
                     <form action="/usuario/{{this.comment._id}}/eliminar-comentario" method="POST">
                         <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
                     </form>
-
 
                     {{else ../isEditor}}
 
@@ -70,40 +75,18 @@
 
             <div class="container" id="comments">
 
-                <div class="container" id="commets">
+                <form class="form-group new-comment" action="/usuario/{{id}}/caso/comentar" method="POST">
+                    <label for="comment">Añadir comentario: </label>
+                    <textarea class="form-control" id="comment" rows="3" name="content"></textarea>
+                    <input type="hidden" name="caseId" value="{{caso._id}}">
+                    <input type="hidden" name="creator" value="{{id}}">
 
-                    <form class="form-group" action="/usuario/{{id}}/caso/comentar" method="POST">
-                        <label for="comment">Comenta</label>
-                        <textarea class="form-control" id="comment" rows="3" name="content"></textarea>
-                        <input type="hidden" name="caseId" value="{{caso._id}}">
-                        <input type="hidden" name="creator" value="{{id}}">
-
-                        <button class="btn btn-dark" style="background-color: #980aad">Añadir</button>
-                    </form>
-
-                </div>
+                    <button class="btn btn-dark" style="background-color: #980aad">Añadir</button>
+                </form>
 
             </div>
 
             {{/if}}
-
-
-        </div>
-    </div>
-
-    <div class="row">
-
-        <div class="col-8">
-            {{!-- <article>
-                {{caso.description}}
-                <hr>
-                <p>
-                    Creado por {{caso.creator.username}}
-                </p>
-            </article> --}}
-
-
-
 
 
         </div>

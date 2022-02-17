@@ -1,23 +1,43 @@
-<h1>Maaaazo de eventos</h1>
+<section class="events-list">
+    <div class="container">
+        <div class="row">
 
-<ul class="list-group">
+            <h1>Eventos</h1>
+            <p>Nuestros colaboradores llevan a cabo eventos para bla bla</p>
 
-    {{#if isEditor}}
-    <p>SOY EL EDITOR</p>
-    {{/if}}
+            <ul class="list-group">
 
-    {{#each allEvents}}
+                {{#each allEvents}}
 
-    <li class="list-group"> {{title}}</li>
-    <form id="join-form" action="/eventos/{{id}}/unirse" method="POST">
-        <button id="btn-join" class="btn btn-dark" style="background-color: #7859d3">Unirme al evento</button>
-    </form>
+                <div class="card mb-3">
+                    <img src="{{eventImg}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text">{{type}}</p>
+                        <p class="card-text"><small class="text-muted">{{date}}</small></p>
 
-    <a class="btn btn-info" href="/eventos/{{id}}">Ver más</a>
+                        <div class="event-buttons">
+                            <a class="btn btn-info" href="/eventos/{{id}}">Ver más</a>
 
-    {{/each}}
+                            <form id="join-form" action="/eventos/{{id}}/unirse" method="POST">
+                                <button id="btn-join" class="btn btn-dark" style="background-color: #7859d3">Unirme al
+                                    evento</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
-</ul>
+                {{/each}}
+
+            </ul>
+
+        </div>
+    </div>
+</section>
+
+
+
+
 
 
 {{!--

@@ -102,6 +102,37 @@ h1, h2{
   margin: 30px;
 }
 
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.postedBy {
+  font-size: 0.9em;
+}
+
+.new-comment {
+  margin: 15px auto;
+}
+
+.case-details-buttons {
+  display: flex;
+}
+
+/* ---- EVENTS LIST */
+.events-list {
+  margin: 30px auto;
+}
+
+.event-buttons {
+  display: flex;
+}
+
 
 /* ---- NAV BAR */
 

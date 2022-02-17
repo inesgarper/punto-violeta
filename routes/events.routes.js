@@ -1,4 +1,5 @@
 const router = require("express").Router()
+const fileUploader = require("../config/cloudinary.config")
 
 const User = require("../models/User.model")
 const Event = require("../models/Event.model")
@@ -10,12 +11,9 @@ const { userIsEditor } = require("../utils")
 // --- EVENTS LIST ROUTE
 router.get('/', isLoggedIn, (req, res, next) => {
 
-    const user = req.session.currentUser
-    const isEditor = userIsEditor(user)
-
     Event
         .find()
-        .then(allEvents => res.render('events/allEvents', { allEvents, user: req.session.currentUser, isEditor }))
+        .then(allEvents => res.render('events/allEvents', { allEvents }))
         .catch(error => next(error))
 })
 
@@ -27,7 +25,7 @@ router.get('/crear', isLoggedIn, (req, res, next) => {
     res.render('events/create', { userId })
 })
 
-router.post('/crear', (req, res, next) => {
+router.post('/crear', fileUploader.single('eventImg'), (req, res, next) => {
 
     const { title, type, description, address, URL, startTime, date, creator, eventImg } = req.body
 
@@ -37,7 +35,7 @@ router.post('/crear', (req, res, next) => {
     }
 
     Event
-        .create({ title, type, description, location, startTime, date, creator, eventImg })
+        .create({ title, type, description, location, startTime, date, creator, eventImg: req.file.path })
         .then(() => res.redirect('/eventos'))
         .catch(err => console.log(err))
 })
@@ -46,14 +44,16 @@ router.post('/crear', (req, res, next) => {
 router.get('/:id', (req, res, next) => {
 
     const { id } = req.params
-    console.log(id)
+
+    const user = req.session.currentUser
+    const isEditor = userIsEditor(user)
 
     const promises = [Event.findById(id), User.find({ events: id }).populate('events')]
 
     Promise.all(promises)
         .then(([theEvent, assistants]) => {
             console.log(assistants)
-            res.render('events/details', { theEvent, assistants })
+            res.render('events/details', { theEvent, assistants, user: req.session.currentUser, isEditor })
         })
         .catch(err => console.log(err))
 })
