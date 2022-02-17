@@ -32,8 +32,8 @@ router.post('/crear', (req, res, next) => {
     const { title, type, description, address, URL, startTime, date, creator, eventImg } = req.body
 
     const location = {
-        address: address,
-        URL: URL
+        address,
+        URL
     }
 
     Event
@@ -103,7 +103,7 @@ router.get('/:id/editar', isLoggedIn, (req, res, next) => {
 
     Event
         .findById(id)
-        .then(theEvent => res.render('events/edit', theEvent))
+        .then(theEvent => res.render('events/edit', { theEvent, user: req.session.currentUser}))
         .catch(err => console.log(err))
 })
 

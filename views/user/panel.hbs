@@ -3,8 +3,22 @@
     <div class="row">
 
         <div class="col-4">
-            <p>Detalles de {{user.username}}</p>
-            {{req.app.locals}}
+            <p>Panel de:
+            <h4>{{user.username}}</h4>
+            </p>
+
+            {{#if isAdmin}}
+            <h1>Soy la jefa jejejeje</h1>
+
+            <ul>
+                {{#each allUsers}}
+                <li> <strong>Usuario: </strong>{{username}}<strong>ID:</strong>{{id}}</li>
+                <form action="/usuario/{{id}}/eliminar" method="POST"> <button class="btn-sm btn-danger">
+                        eliminar</button> </form>
+                {{/each}}
+            </ul>
+
+            {{/if}}
 
             <h2> MIS CASOS </h2>
 
@@ -44,23 +58,26 @@
 
         </form>
 
-        <h2>EVENTOS A LOS QUE ASISTIRÉ</h2>
+        <h3>EVENTOS A LOS QUE ASISTIRÉ</h3>
 
         <div class="container">
 
             <ul class="list-group">
 
                 {{#each user.events}}
-                <li class="list-group-item"> <strong>{{title}}</strong>
+                <li class="list-group-item eventList"> <strong>{{title}}</strong>
 
                     <article>
-                        {{description}}
-                        <a class="btn-sm btn-success" href="{{location.URL}}">Cómo Llegar</a>
+                        <p>{{description}}</p>
+                        <div>
+                            <a class="btn btn-success" href="{{location.URL}}">Cómo Llegar</a>
+                            <form action="/eventos/{{id}}/desunirse" method="POST">
+                                <button class="btn btn-warning">Cancelar asistencia</button>
+                            </form>
+                        </div>
                     </article>
 
-                    <form action="/eventos/{{id}}/desunirse" method="POST">
-                        <button class="btn btn-warning">Cancelar asistencia</button>
-                    </form>
+
 
                 </li>
                 {{/each}}
@@ -77,7 +94,8 @@
 
             <ul class="list-group">
                 {{#each allEvents}}
-                <li class="list-group-item"> {{title}}
+                <li class="list-group-item">
+                    <h5>{{title}}</h5>
 
                     <form action="/eventos/{{id}}/eliminar" method="POST">
                         <button class="btn btn-danger">Eliminar evento</button>

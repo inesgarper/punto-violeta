@@ -6,6 +6,7 @@ const { isLoggedIn } = require("../middleware/route-guard")
 // --- LANDING ROUTE
 router.get("/", (req, res, next) => {
 
+
   const user = req.session.currentUser
 
   if (!user) {
@@ -15,6 +16,9 @@ router.get("/", (req, res, next) => {
     const id = req.session.currentUser._id
     res.render("index", { id, user: req.session.currentUser })
   }
+  // const { currentUser } = req.session
+  // !user ?  res.render('index') : res.render("index", { id, id: currentUser._id })
+
 })
 
 // ---- MAP & CREATE CASE (GET)
