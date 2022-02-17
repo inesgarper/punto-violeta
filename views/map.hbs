@@ -1,75 +1,73 @@
-<h1>SOY EL MAPA</h1>
+<section class="map">
 
-<figure id="myMap"></figure>
+    <div class="container">
 
-{{#if user}}
+        <div class="row justify-content-center">
 
+            <div class="col-md-8">
+                <figure id="myMap"></figure>
+            </div>
 
+            <div class="col-md-4 case-form">
 
-<div class="container">
+                {{#if user}}
 
-    <div class="row justify-content-center">
+                <h1>¿Te gustaría contar tu caso?</h1>
 
+                <p>Pínea la ubicación del suceso en el mapa y cuenta todo lo que quieras sobre él. Siéntete libre.</p>
 
+                <form action="/usuario/{{id}}/crear-caso" method="POST">
+                    <div class="mb-3">
+                        {{!-- <label for="descriptionInput" class="form-label">Descripción</label> --}}
+                        <textarea type="text" class="form-control" id="descriptionInput" rows="3"
+                            name="description"></textarea>
+                    </div>
 
-        <div class="col-md-6">
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="latInput" name="lat">
+                    </div>
 
-            <h1>Crear caso</h1>
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="lngInput" name="lng">
+                    </div>
 
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="creatorId" name="creator" value="{{id}}">
+                    </div>
 
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="enableComments" value="on"
+                            id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Si habilitas esta opción permitirás que otros usuarios te manden mensajes sobre tu caso.
+                        </label>
+                    </div>
 
-            <form action="/usuario/{{id}}/crear-caso" method="POST">
-                <div class="mb-3">
-                    <label for="descriptionInput" class="form-label">Descripción</label>
-                    <textarea type="text" class="form-control" id="descriptionInput" rows="3"
-                        name="description"></textarea>
-                </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-dark block">Añadir caso</button>
+                    </div>
+                    {{#if errorMessage}}
 
-                <div class="mb-3">
-                    {{!-- <label for="latInput" class="form-label">Latitud</label> --}}
-                    <input type="hidden" class="form-control" id="latInput" name="lat">
-                </div>
+                    <div id="errorMessage">
+                        <h1>{{errorMessage}}</h1>
+                    </div>
 
-                <div class="mb-3">
-                    {{!-- <label for="lngInput" class="form-label">Longitud</label> --}}
-                    <input type="hidden" class="form-control" id="lngInput" name="lng">
-                </div>
+                    {{/if}}
 
-                <div class="mb-3">
-                    {{!-- <label for="lngInput" class="form-label">Creador</label> --}}
-                    <input type="hidden" class="form-control" id="creatorId" name="creator" value="{{id}}">
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="enableComments" value="on"
-                        id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        ¿Te gustaría recibir comentarios?
-                    </label>
-                </div>
-
-                <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-dark block">Añadir caso</button>
-                </div>
-                {{#if errorMessage}}
-
-                <div id="errorMessage">
-                    <h1>{{errorMessage}}</h1>
-                </div>
+                </form>
 
                 {{/if}}
 
-            </form>
-
-
+            </div>
 
         </div>
+
     </div>
 
-</div>
+
+</section>
 
 
-{{/if}}
 
 
 
@@ -77,4 +75,5 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/js/maps/mapStyles.js"></script>
 <script src="/js/maps/map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=&libraries=visualization&callback=initMap"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi1_pFt2aNH7iIISEYWGm8FqYqnM1xs7w&libraries=visualization&callback=initMap"></script>
