@@ -1,6 +1,6 @@
 <section class="map">
 
-    <div class="container">
+    <div class="container hero">
 
         <div>
             <figure id="myMap"></figure>
@@ -8,7 +8,7 @@
 
         <div class="row justify-content-center">
 
-            <div class="col-md-8 case-form">
+            <div class="col-md-10 case-form">
 
                 {{#if user}}
 
@@ -16,7 +16,7 @@
 
                 <p>Pínea la ubicación del suceso en el mapa y cuenta todo lo que quieras sobre él. Siéntete libre.</p>
 
-                <form action="/usuario/{{id}}/crear-caso" method="POST">
+                <form class='new-case-form' action="/usuario/{{id}}/crear-caso" method="POST">
                     <div class="mb-3">
                         {{!-- <label for="descriptionInput" class="form-label">Descripción</label> --}}
                         <textarea type="text" class="form-control" id="descriptionInput" rows="3"
@@ -43,7 +43,7 @@
                         </label>
                     </div>
 
-                    <div class="d-grid gap-2">
+                    <div class="center-button gap-2">
                         <button type="submit" class="btn btn-dark block">Añadir caso</button>
                     </div>
                     {{#if errorMessage}}

@@ -78,7 +78,7 @@ function printCasesMarkers(cases) {
     cases.forEach(elm => {
 
         const infowindow = new google.maps.InfoWindow({
-            content: `<p>${elm.description}</p> <a href="/usuario/${elm.creator}/${elm._id}" class="btn">ver detalles</a>`
+            content: `<p class="infowindow-text">${elm.description}</p> <a href="/usuario/${elm.creator}/${elm._id}" class="btn infowindow-btn">ver detalles</a>`
         })
 
         const image = 'https://i.ibb.co/QDvh6yP/marker.png'
@@ -100,17 +100,17 @@ function printCasesMarkers(cases) {
                 shouldFocus: false,
             })
         })
-        
-        let  heatMapData = [{
-            location: 
+
+        let heatMapData = [{
+            location:
                 new google.maps.LatLng(
                     elm.location.coordinates[0],
-                    elm.location.coordinates[1]), 
-                    weight: 3
-            }]
-        
+                    elm.location.coordinates[1]),
+            weight: 3
+        }]
+
         const heatmap = new google.maps.visualization.HeatmapLayer({
-                        data: heatMapData
+            data: heatMapData
         })
 
         heatmap.setMap(map)

@@ -1,6 +1,8 @@
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+p {
+font-family: 'sans-serif';
+font-size: 1.5em;
 }
+
 
 a {
   color: #ffffff;
@@ -18,8 +20,10 @@ nav .btn:hover {
   color: rgb(134, 134, 134)
 }
 
-h1 {
-  color: 15px;
+h1, h2{
+  
+  font-family: 'DM Serif Display', serif;
+  color: #1c1f23
 }
 
 /* ---- LANDING */
@@ -34,6 +38,16 @@ h1 {
 }
 
 /* ---- MAPS & CREATE CASES */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-case-form{
+  display: flex;
+  flex-direction: column;
+}
 
 .map {
   display: flex;
@@ -42,18 +56,22 @@ h1 {
 }
 
 #myMap, #editMap{
-  margin: 20px;
+  margin-top: 20px;
   height: 550px;
-  width: 90%;
+  width: 1200px;
   border-radius: 5px;
 }
 
 .case-form {
-  margin: 50px;
+  margin-top: 40px;
+  margin-bottom: 70px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 800px;
 }
 
 .case-form button {
@@ -61,6 +79,29 @@ h1 {
   background-color: white;
   border: 1px solid black;
 }
+
+.infowindow-text {
+  font-weight: 500;
+  font-size: 1.3em;
+  color: #a482b0
+}
+
+.infowindow-btn {
+  color: white;
+  background-color: #a482b0;
+}
+
+.center-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---- CASE CARD */
+.case-card {
+  margin: 30px;
+}
+
 
 /* ---- NAV BAR */
 

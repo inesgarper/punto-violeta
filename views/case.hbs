@@ -1,17 +1,11 @@
 <div class="container">
 
-    <div class="row">
-
-        <div class="col-8">
-            <article>
-                {{caso.description}}
-                <hr>
-                <p>
-                    Creado por {{caso.creator.username}}
-                </p>
-            </article>
-
-
+    <div class="card case-card">
+        <div class="card-header">
+            Caso de {{caso.creator.username}}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{caso.description}}</h5>
 
             {{#if isSelf}}
 
@@ -22,11 +16,7 @@
             <a class="btn btn-dark" style="background-color: #e6d412;" href="/usuario/{{id}}/{{caso._id}}/editar"
                 class="btn-dark">Editar caso</a>
 
-
-
-
             {{else isEditor}}
-
 
             <form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
                 <button class="btn btn-dark" style="background-color: #f05811;">Eliminar caso</button>
@@ -37,17 +27,48 @@
 
             {{/if}}
 
+            <hr>
 
+
+            <h5 class="card-title comments">Comentarios</h5>
+
+            {{#if disableComments}}
+
+            <p class="card-text">LOS COMENTARIOS NO ESTÁN HABILITADOS PARA ESTE CASO.</p>
+
+            {{/if}}
+
+            {{#if includesComments}}
+
+            <ul class="list-group">
+
+                {{#each comments}}
+                <li class="list-group-item">{{this.comment.content}}
+                    <p class="postedBy"> <strong>{{this.comment.creator.username}}</strong> </p>
+
+
+                    {{#if this.isOwned}}
+
+
+                    <form action="/usuario/{{this.comment._id}}/eliminar-comentario" method="POST">
+                        <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
+                    </form>
+
+
+                    {{else ../isEditor}}
+
+                    <form action="/usuario/{{this.comment._id}}/eliminar-comentario" method="POST">
+                        <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
+                    </form>
+
+                    {{/if}}
+
+                </li>
+                {{/each}}
+
+            </ul>
 
             <div class="container" id="comments">
-
-                {{#if disableComments}}
-
-                <p>LOS COMENTARIOS NO ESTÁN HABILITADOS PARA ESTE CASO</p>
-
-                {{/if}}
-
-                {{#if includesComments}}
 
                 <div class="container" id="commets">
 
@@ -60,42 +81,30 @@
                         <button class="btn btn-dark" style="background-color: #980aad">Añadir</button>
                     </form>
 
-                    <ul class="list-group">
-
-
-                        {{#each comments}}
-                        <li class="list-group-item">{{this.comment.content}}
-                            <p class="postedBy"> <strong>{{this.comment.creator.username}}</strong> </p>
-
-
-                            {{#if this.isOwned}}
-
-
-                            <form action="/usuario/{{this.comment._id}}/eliminar-comentario" method="POST">
-                                <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
-                            </form>
-
-
-                            {{else ../isEditor}}
-
-                            <form action="/usuario/{{this.comment._id}}/eliminar-comentario" method="POST">
-                                <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
-                            </form>
-
-                            {{/if}}
-
-
-
-                        </li>
-                        {{/each}}
-
-                    </ul>
-
                 </div>
 
-                {{/if}}
-
             </div>
+
+            {{/if}}
+
+
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-8">
+            {{!-- <article>
+                {{caso.description}}
+                <hr>
+                <p>
+                    Creado por {{caso.creator.username}}
+                </p>
+            </article> --}}
+
+
+
+
 
         </div>
 

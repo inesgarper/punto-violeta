@@ -36,7 +36,7 @@
         </div>
         <div class="col-5 panelDiv">
 
-            <button id="edit-user-btn" class="btn btn-sm btn-dark" style="background-color: #7859d3">Editar
+            <button id="edit-user-btn" class="btn btn-sm btn-dark" style="background-color: #a482b0">Editar
                 Perfil</button>
 
             <form id="edit-form" class="editUser-off" action="/usuario/{{user._id}}/editar" method="POST">
@@ -70,10 +70,11 @@
             <ul class="list-group eventsList">
 
                 {{#each user.events}}
-                <li class="list-group-item eventList"> <h6><strong>{{title}}</strong></h6>
+                <li class="list-group-item eventList">
+                    <h6><strong>{{title}}</strong></h6>
 
                     <article>
-                        
+
                         <div>
                             <a class="btn btn-success" href="{{location.URL}}">Cómo Llegar</a>
                             <form action="/eventos/{{id}}/desunirse" method="POST">
