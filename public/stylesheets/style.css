@@ -1,3 +1,8 @@
+body {
+  background-image: url('/images/fondo-2.jpg');
+  background-size: cover;
+}
+
 p {
 font-family: 'sans-serif';
 font-size: 1.5em;
@@ -66,7 +71,7 @@ h1, h2, h3{
   align-items: center;
 }
 
-#myMap, #editMap{
+#myMap, #editMap {
   margin-top: 20px;
   height: 550px;
   width: 1200px;
@@ -85,7 +90,7 @@ h1, h2, h3{
   width: 800px;
 }
 
-.case-form button {
+.new-case-form button {
   color: black;
   background-color: white;
   border: 1px solid black;
@@ -146,6 +151,10 @@ h1, h2, h3{
 
 
 /* ---- NAV BAR */
+
+.nav-link p {
+  font-family: 'DM Serif Display', serif;
+}
 
 .navbar-text{
   margin-left: auto;
@@ -264,4 +273,26 @@ h1, h2, h3{
 .cancel-btn{
   margin-top: 4px;
 }
+
+.user-events-panel, .manage-events-buttons {
+  display: flex;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.user-events-panel a {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+#create-event {
+  display: block;
+}
+
+
 

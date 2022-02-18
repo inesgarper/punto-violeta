@@ -1,9 +1,9 @@
 <div class="container">
-    <h1>EDITAR EL CASO</h1>
+
 
     <figure id="editMap"></figure>
 
-    <form action="/usuario/{{id}}/{{caso._id}}/editar" method="POST">
+    <form action="/usuario/{{id}}/{{caso._id}}/editar" class="" method="POST">
         <div class="mb-3">
             <label for="descriptionInput" class="form-label">Descripción</label>
             <textarea type="text" class="form-control" id="descriptionInput" rows="3"
@@ -60,4 +60,5 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> --}}
 <script src="/js/maps/mapStyles.js"></script>
 <script src="/js/maps/editMap.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?AIzaSyCi1_pFt2aNH7iIISEYWGm8FqYqnM1xs7w&callback=initMap"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi1_pFt2aNH7iIISEYWGm8FqYqnM1xs7w&callback=initMap"></script>

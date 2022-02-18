@@ -7,8 +7,10 @@
 
             <ul class="list-group">
 
-                {{#each allEvents}}
 
+
+
+                {{#each allEvents}}
                 <div class="card mb-3">
                     <img src="{{eventImg}}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -20,14 +22,15 @@
                             <a class="btn btn-info" href="/eventos/{{id}}">Ver más</a>
 
                             <form id="join-form" action="/eventos/{{id}}/unirse" method="POST">
-                                <button id="btn-join" class="btn btn-dark" style="background-color: #7859d3">Unirme al
+                                <button id="btn-join" class="btn btn-dark" style="background-color: #7859d3">Unirme
+                                    al
                                     evento</button>
                             </form>
                         </div>
                     </div>
                 </div>
-
                 {{/each}}
+
 
             </ul>
 

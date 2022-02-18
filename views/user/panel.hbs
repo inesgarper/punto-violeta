@@ -1,7 +1,12 @@
 <div class="container">
 
+    <div class="panel-header">
+        <h2 class="title">¡Bienvenida {{user.username}}!</h2>
+        <button id="edit-user-btn" class="btn btn-sm btn-dark" style="background-color: #a482b0">Editar
+            Perfil</button>
+    </div>
 
-    <h2 class="title">Bienvenida {{user.username}}</h2>
+
     <hr>
     <div class="row panel justify-content-center">
 
@@ -14,7 +19,8 @@
                 <ul>
                     {{#each allUsers}}
                     <li> <strong>Usuario: </strong>{{username}}<strong>ID:</strong>{{id}}</li>
-                    <form action="/usuario/{{id}}/eliminar" method="POST"> <button class="btn-sm btn-dark button-center">
+                    <form action="/usuario/{{id}}/eliminar" method="POST"> <button
+                            class="btn-sm btn-dark button-center">
                             eliminar</button> </form>
                     {{/each}}
                 </ul>
@@ -23,10 +29,10 @@
             </div>
 
             <div class="card-body mycasesPanel">
-                <h3 class="card-title"> Mis Casos </h3>
+                <h3 class="card-title"> Estos son los casos que has compartido: </h3>
                 <section>
                     {{#each allUserCases}}
-                    <div class="card case" style="width: 18rem;">
+                    <div class="card case">
                         {{description}} <a href="/usuario/{{creator._id}}/{{_id}}"
                             class="btn btn-sm btn-dark">Detalle</a>
                     </div>
@@ -34,7 +40,6 @@
                 </section>
             </div>
 
-            <hr>
         </div>
 
 
@@ -49,10 +54,10 @@
 
                     <article>
 
-                        <div>
-                            <a class="btn btn-dark " href="{{location.URL}}">Cómo Llegar</a>
+                        <div class="user-events-panel">
+                            <a class="btn btn-dark" href="{{location.URL}}">Cómo Llegar</a>
                             <form action="/eventos/{{id}}/desunirse" method="POST">
-                                <button class="btn-sm btn-dark center-button cancel-btn">Cancelar asistencia</button>
+                                <button class="btn btn-dark center-button cancel-btn">Cancelar asistencia</button>
                             </form>
                         </div>
                     </article>
@@ -62,11 +67,12 @@
                 </li>
                 {{/each}}
             </ul>
-            <hr>
+
         </div>
 
-
         <div class="col-8 editorPanel">
+
+            <hr>
 
             {{#if isEditor}}
 
@@ -79,51 +85,29 @@
                     <li class="list-group-item">
                         <h5>{{title}}</h5>
 
-                        <form action="/eventos/{{id}}/eliminar" method="POST">
-                            <button class="btn btn-danger">Eliminar evento</button>
-                        </form>
-                        <a href="/eventos/{{id}}/editar" class="btn btn-info">Editar este EVENTO</a>
+                        <div class="manage-events-buttons">
+                            <form action="/eventos/{{id}}/eliminar" method="POST">
+                                <button class="btn btn-danger">Eliminar evento</button>
+                            </form>
+                            <a href="/eventos/{{id}}/editar" class="btn btn-info">Editar</a>
+                        </div>
+
                     </li>
                     {{/each}}
                 </ul>
 
-                <a href="/eventos/crear" id="edit-user-btn" class="btn boton-center btn-sm btn-dark"
-                    style="background-color: #a482b0">Crear
-                    Evento</a>
+                <div class="d-grid gap-2">
+                    <a href="/eventos/crear" id="create-event" class="btn boton-center btn-dark"
+                        style="background-color: #a482b0">Crear Evento</a>
+                </div>
+
                 <hr>
             </div>
 
             {{/if}}
         </div>
 
-        <div class="col-8 center-panel">
 
-            <button id="edit-user-btn" class="btn btn-sm btn-dark" style="background-color: #a482b0">Editar
-                Perfil</button>
-
-            <form id="edit-form" class="editUser-off" action="/usuario/{{user._id}}/editar" method="POST">
-                <div class="mb-3">
-                    <label for="emailInput" class="form-label">Dirección de email</label>
-                    <input type="email" class="form-control" id="emailInput" name="email">
-                </div>
-
-                <div class="mb-3">
-                    <label for="usernameInput" class="form-label">Nombre de usuario</label>
-                    <input type="text" class="form-control" id="usernameInput" name="username">
-                </div>
-
-                <div class="mb-3">
-                    <label for="idInput" class="form-label"></label>
-                    <input type="hidden" class="form-control" id="idInput" name="id" value="{{user._id}}">
-                </div>
-
-                <div class="botton-center gap-2">
-                    <button type="submit" class="btn btn-dark block">Actualizar datos</button>
-                </div>
-
-            </form>
-
-        </div>
 
 
 

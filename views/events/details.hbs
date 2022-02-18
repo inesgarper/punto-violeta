@@ -1,13 +1,35 @@
-<h2>{{theEvent.title}}</h2>
+<div class="container">
+    <div class="row">
+        <div class="card mb-3">
+            <img src="{{theEvent.eventImg}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">{{theEvent.title}}</h3>
+                <p class="card-text">{{theEvent.type}}</p>
+                <hr>
+                <p class="card-text">{{theEvent.description}}</p>
+                <p class="card-text"><small class="text-muted">{{theEvent.date}}</small></p>
+                <p class="card-text"><small class="text-muted">{{theEvent.startTime}}</small></p>
 
+                <div class="event-buttons">
+                    <form id="join-form" action="/eventos/{{id}}/unirse" method="POST">
+                        <button id="btn-join" class="btn btn-dark" style="background-color: #7859d3">Unirme al
+                            evento</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-{{#if isEditor}}
+    {{#if isEditor}}
 
-<h2>ASISTENTES</h2>
+    <h2>ASISTENTES</h2>
 
-{{#each assistants}}
-<p>{{this.username}}</p>
-<p></p>
-{{/each}}
+    <ol class="list-group list-group-numbered">
+        {{#each assistants}}
+        <li class="list-group-item">{{this.username}}</li>
+        {{/each}}
+    </ol>
 
-{{/if}}
+    {{/if}}
+
+</div>

@@ -35,4 +35,9 @@ router.get("/mapa", (req, res, next) => {
   }
 })
 
+// ---- STATISTICS
+router.get("/estadisticas", (req, res, next) => {
+  res.render('statistics')
+})
+
 module.exports = router
