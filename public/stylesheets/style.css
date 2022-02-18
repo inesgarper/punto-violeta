@@ -149,14 +149,6 @@ h1, h2, h3{
   display: flex;
 }
 
-
-/* ---- NAV BAR */
-/* .navbar{
-  position:fixed;
-  width: 100%;
-
-} */
-
 .nav-link p {
   font-family: 'DM Serif Display', serif;
 }
@@ -229,7 +221,7 @@ h1, h2, h3{
   
 }
 
-.btn-check:focus+.btn-dark, .btn-dark:focus {
+.btn-check:focus+.btn-dark, .btn-dark:focus, .events-list a {
     color: #fff;
     background-color: #1c1f23;
     border-color: #1a1e21;
@@ -250,13 +242,28 @@ h1, h2, h3{
   display: flex;
 }
 
+.events-list img {
+  max-width: 400px;
+}
+
 .case {
   padding: 20px;
   margin: 10px;
 }
+/* ---- Create Event */
 
+.create-event {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
 
 /* ---- Panel */
+
+.panel-header{
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
 
 .center-panel {
   text-align: center;
@@ -289,15 +296,33 @@ h1, h2, h3{
 }
 
 
-.user-events-panel a {
+.user-events-panel a, .eventList a, .events-list button {
   color: black;
   background-color: white;
   border: 1px solid black;
 }
 
 #create-event {
-  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 7px;
+  margin-top: 15px;
+  border-radius: 5px;
 }
+
+.events-list h2{
+  margin-bottom: 14px;
+}
+
+.eventList .list-group-item {
+ margin: 2px;
+}
+
+.eventList .btn-danger{
+  background-color: #FABE60
+}
+
+
 
 
 

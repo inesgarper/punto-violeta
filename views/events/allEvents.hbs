@@ -9,27 +9,29 @@
 
 
 
+                <div class="row justify-content-center">
 
                 {{#each allEvents}}
-                <div class="card mb-3">
-                    <img src="{{eventImg}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{title}}</h5>
-                        <p class="card-text">{{type}}</p>
-                        <p class="card-text"><small class="text-muted">{{date}}</small></p>
-
-                        <div class="event-buttons">
-                            <a class="btn btn-info" href="/eventos/{{id}}">Ver más</a>
-
-                            <form id="join-form" action="/eventos/{{id}}/unirse" method="POST">
-                                <button id="btn-join" class="btn btn-dark" style="background-color: #7859d3">Unirme
-                                    al
-                                    evento</button>
-                            </form>
+                    <div class="col-6">
+                        <div class="card mb-3">
+                            <img src="{{eventImg}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{title}}</h5>
+                                <p class="card-text">{{type}}</p>
+                                <p class="card-text"><small class="text-muted">{{date}}</small></p>
+                                <div class="event-buttons">
+                                    <a class="btn btn-info" href="/eventos/{{id}}">Ver más</a>
+                                    <form id="join-form" action="/eventos/{{id}}/unirse" method="POST">
+                                        <button id="btn-join" class="btn btn-dark" style="background-color: #7859d3">Unirme
+                                            al
+                                            evento</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 {{/each}}
+                </div>
 
 
             </ul>
