@@ -361,6 +361,10 @@ h1, h2, h3{
   display: flex;
 }
 
+.sans-serif {
+  font-family: sans-serif;
+}
+
 .panel-header {
   display: flex;
   justify-content: space-between;
