@@ -76,6 +76,13 @@ h1, h2, h3{
   flex-direction: column;
 }
 
+.edit-case-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 700px;
+}
+
 .map {
   display: flex;
   justify-content: center;
@@ -126,6 +133,13 @@ h1, h2, h3{
 .center-button {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.edit-enablecomments {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -295,7 +309,8 @@ h1, h2, h3{
 }
 
 .events-list img {
-  max-width: 400px;
+  max-width: 100%;
+  max-height: 80%;
 }
 
 .case {
@@ -374,6 +389,27 @@ h1, h2, h3{
   background-color: #FABE60
 }
 
+/* -- EVENT DETAILS */
+
+.event-details {
+  margin-top: 20px;
+}
+
+.event-details img {
+  max-width: fit-content;
+  margin: auto;
+  display: block;
+  margin: 20px auto;
+}
+
+.event-details p {
+  font-family: sans-serif;
+  font-size: 1em;
+}
+
+.assistants {
+  margin: 20px auto;
+}
 
 
 

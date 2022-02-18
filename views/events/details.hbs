@@ -1,35 +1,42 @@
-<div class="container">
-    <div class="row">
-        <div class="card mb-3">
-            <img src="{{theEvent.eventImg}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h3 class="card-title">{{theEvent.title}}</h3>
-                <p class="card-text">{{theEvent.type}}</p>
-                <hr>
-                <p class="card-text">{{theEvent.description}}</p>
-                <p class="card-text"><small class="text-muted">{{theEvent.date}}</small></p>
-                <p class="card-text"><small class="text-muted">{{theEvent.startTime}}</small></p>
+<section class="event-details">
+    <div class="container">
+        <div class="row">
+            <div class="card mb-3 event-details">
+                <img src="{{theEvent.eventImg}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title">{{theEvent.title}}</h3>
+                    <p class="card-text">{{theEvent.type}}</p>
+                    <hr>
+                    <p class="card-text">{{theEvent.description}}</p>
+                    <p class="card-text"><small class="text-muted">{{theEvent.date}}</small></p>
+                    <p class="card-text"><small class="text-muted">{{theEvent.startTime}}</small></p>
 
-                <div class="event-buttons">
-                    <form id="join-form" action="/eventos/{{id}}/unirse" method="POST">
-                        <button id="btn-join" class="btn btn-dark" style="background-color: #7859d3">Unirme al
-                            evento</button>
-                    </form>
+                    <div class="event-buttons">
+                        <form id="join-form" action="/eventos/{{id}}/unirse" method="POST">
+                            <button id="btn-join" class="btn btn-dark" style="background-color: #a482b0">Unirme al
+                                evento</button>
+                            <a class="btn btn-dark" href="{{theEvent.location.URL}}">Cómo Llegar</a>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+
+        {{#if isEditor}}
+
+        <div class="assistants">
+            <h2>ASISTENTES</h2>
+
+            <ol class="list-group list-group-flush">
+                {{#each assistants}}
+                <li class="list-group-item">{{this.username}}</li>
+                {{/each}}
+            </ol>
+
+        </div>
+
+
+        {{/if}}
+
     </div>
-
-    {{#if isEditor}}
-
-    <h2>ASISTENTES</h2>
-
-    <ol class="list-group list-group-numbered">
-        {{#each assistants}}
-        <li class="list-group-item">{{this.username}}</li>
-        {{/each}}
-    </ol>
-
-    {{/if}}
-
-</div>
+</section>
