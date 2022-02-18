@@ -80,7 +80,7 @@
 
                 <h2 class="card-title">LISTA DE EVENTOS</h2>
 
-                <ul class="list-group eventList">
+                <div class="list-group eventList">
                     {{#each allEvents}}
                     <li class="list-group-item">
                         <h5>{{title}}</h5>
@@ -94,7 +94,7 @@
 
                     </li>
                     {{/each}}
-                </ul>
+                </div>
 
                 <div class="d-grid gap-2">
                     <a href="/eventos/crear" id="create-event" class="btn boton-center btn-dark"

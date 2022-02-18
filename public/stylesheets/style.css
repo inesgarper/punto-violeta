@@ -151,6 +151,11 @@ h1, h2, h3{
 
 
 /* ---- NAV BAR */
+/* .navbar{
+  position:fixed;
+  width: 100%;
+
+} */
 
 .nav-link p {
   font-family: 'DM Serif Display', serif;
