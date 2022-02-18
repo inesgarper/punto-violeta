@@ -6,6 +6,27 @@
             Perfil</button>
     </div>
 
+    <form id="edit-form" class="editUser-off" action="/usuario/{{user._id}}/editar" method="POST">
+        <div class="mb-3">
+            <label for="emailInput" class="form-label">Dirección de email</label>
+            <input type="email" class="form-control" id="emailInput" name="email">
+        </div>
+
+        <div class="mb-3">
+            <label for="usernameInput" class="form-label">Nombre de usuario</label>
+            <input type="text" class="form-control" id="usernameInput" name="username">
+        </div>
+
+        <div class="mb-3">
+            <label for="idInput" class="form-label"></label>
+            <input type="hidden" class="form-control" id="idInput" name="id" value="{{user._id}}">
+        </div>
+
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-dark block">Actualizar datos</button>
+        </div>
+
+    </form>
 
     <hr>
     <div class="row panel justify-content-center">
