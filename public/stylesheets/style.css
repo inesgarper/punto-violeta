@@ -118,7 +118,7 @@ h1, h2, h3{
   color: black
 }
 
-.infowindow-btn {
+.infowindow-btn , #btn-join{
   color: white;
   background-color: #a482b0;
 }
@@ -273,7 +273,7 @@ h1, h2, h3{
   
 }
 
-.btn-check:focus+.btn-dark, .btn-dark:focus, .events-list a {
+.btn-check:focus+.btn-dark, .btn-dark:focus, .events-list a{
     color: #fff;
     background-color: #1c1f23;
     border-color: #1a1e21;
@@ -307,6 +307,10 @@ h1, h2, h3{
 .create-event {
   margin-top: 15px;
   margin-bottom: 20px;
+}
+
+.edit-event-view{
+  margin-top: 20px;
 }
 
 /* ---- Panel */
@@ -348,7 +352,7 @@ h1, h2, h3{
 }
 
 
-.user-events-panel a, .eventList a, .events-list button {
+.user-events-panel a, .eventList a {
   color: black;
   background-color: white;
   border: 1px solid black;
