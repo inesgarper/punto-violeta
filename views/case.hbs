@@ -4,29 +4,29 @@
         <div class="card-header">
             Caso de {{caso.creator.username}}
         </div>
-        <div class="card-header">
+        <div class="card-header content">
             <h5 class="card-title">{{caso.description}}</h5>
 
             {{#if isSelf}}
 
             <div class="case-details-buttons">
-                <form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
-                    <button class="btn btn-dark" style="background-color: #f05811;">Eliminar caso</button>
-                </form>
 
-                <a class="btn btn-dark" style="background-color: #e6d412;" href="/usuario/{{id}}/{{caso._id}}/editar"
-                    class="btn-dark">Editar caso</a>
+                <a class="btn btn-dark btn-white" href="/usuario/{{id}}/{{caso._id}}/editar" class="btn-dark">Editar
+                    caso</a>
+
+                <form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
+                    <button class="btn btn-dark" style="background-color: #FABE60;">Eliminar caso</button>
+                </form>
             </div>
 
             {{else isEditor}}
 
             <div class="case-details-buttons">
-                <form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
-                    <button class="btn btn-dark" style="background-color: #f05811;">Eliminar caso</button>
-                </form>
+                <a class="btn btn-dark btn-white" href="/usuario/{{id}}/{{caso._id}}/editar">Editar caso</a>
 
-                <a class="btn btn-dark" style="background-color: #e6d412;" href="/usuario/{{id}}/{{caso._id}}/editar"
-                    class="btn-dark">Editar caso</a>
+                <form action="/usuario/{{id}}/{{caso._id}}/eliminar" method="POST">
+                    <button class="btn btn-dark" style="background-color: #FABE60;">Eliminar caso</button>
+                </form>
             </div>
 
             {{/if}}
@@ -34,54 +34,60 @@
 
         <div class="card-body">
 
-            <h5 class="card-title comments">Comentarios</h5>
+            <div class="comments-container">
+                <h5 class="card-title comments">COMENTARIOS</h5>
 
-            {{#if disableComments}}
+                {{#if disableComments}}
 
-            <p class="card-text">LOS COMENTARIOS NO ESTÁN HABILITADOS PARA ESTE CASO.</p>
+                <p class="card-text">LOS COMENTARIOS NO ESTÁN HABILITADOS PARA ESTE CASO.</p>
 
-            {{/if}}
+                {{/if}}
 
-            {{#if includesComments}}
+                {{#if includesComments}}
 
-            <ul class="list-group">
+                <ul class="list-group">
 
-                {{#each comments}}
-                <li class="list-group-item">
+                    {{#each comments}}
+                    <li class="list-group-item">
 
-                    <div class="comment-details">
-                        <p class="postedBy">Comentario de {{this.comment.creator.username}}</p>
-                        <p><strong>{{this.comment.content}}</strong></p>
-                    </div>
+                        <div class="comment-details">
+                            <p class="postedBy">-- {{this.comment.creator.username}}</p>
+                            <p class="comment">{{this.comment.content}}</p>
+                        </div>
 
-                    {{#if this.isOwned}}
+                        {{#if this.isOwned}}
 
-                    <form action="/usuario/{{this.comment._id}}/eliminar-comentario" method="POST">
-                        <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
-                    </form>
+                        <form action="/usuario/{{this.comment._id}}/eliminar-comentario" method="POST">
+                            <button class="btn btn-dark" style="background-color: #FABE60">Eliminar</button>
+                        </form>
 
-                    {{else ../isEditor}}
+                        {{else ../isEditor}}
 
-                    <form action="/usuario/{{this.comment._id}}/eliminar-comentario" method="POST">
-                        <button class="btn btn-dark" style="background-color: #ad0a33">Borrar</button>
-                    </form>
+                        <form action="/usuario/{{this.comment._id}}/eliminar-comentario" method="POST">
+                            <button class="btn btn-dark" style="background-color: #FABE60">Eliminar</button>
+                        </form>
 
-                    {{/if}}
+                        {{/if}}
 
-                </li>
-                {{/each}}
+                    </li>
+                    {{/each}}
 
-            </ul>
+                </ul>
+
+            </div>
+
+
 
             <div class="container" id="comments">
 
+                <h5>¿Te gustaría dejar un mensaje a {{caso.creator.username}}?</h5>
+
                 <form class="form-group new-comment" action="/usuario/{{id}}/caso/comentar" method="POST">
-                    <label for="comment">Añadir comentario: </label>
                     <textarea class="form-control" id="comment" rows="3" name="content"></textarea>
                     <input type="hidden" name="caseId" value="{{caso._id}}">
                     <input type="hidden" name="creator" value="{{id}}">
 
-                    <button class="btn btn-dark" style="background-color: #980aad">Añadir</button>
+                    <button class="btn btn-dark" style="background-color: #a482b0">Enviar</button>
                 </form>
 
             </div>
