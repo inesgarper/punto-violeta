@@ -3,7 +3,7 @@
         <div class="row">
 
             <h1>Eventos</h1>
-            <p>Nuestros colaboradores llevan a cabo eventos para bla bla</p>
+
 
             <ul class="list-group">
 
@@ -20,9 +20,11 @@
                                 <p class="card-text">{{type}}</p>
                                 <p class="card-text"><small class="text-muted">{{date}}</small></p>
                                 <div class="event-buttons">
-                                    <a class="btn-dark" href="/eventos/{{id}}">Ver más</a>
+                                    <a class="btn btn-info" href="/eventos/{{id}}">Ver más</a>
                                     <form id="join-form" action="/eventos/{{id}}/unirse" method="POST">
-                                        <button id="btn-join" class="btn btn-dark">Unirme al evento</button>
+                                        <button id="btn-join" class="btn btn-dark">Unirme
+                                            al
+                                            evento</button>
                                     </form>
                                 </div>
                             </div>
@@ -37,3 +39,11 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+{{!--
+<script src="/js/joinButton.js"></script> --}}

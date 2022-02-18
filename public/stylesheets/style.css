@@ -371,6 +371,7 @@ h1, h2, h3{
   color: black;
   background-color: white;
   border: 1px solid black;
+  max-height: 38px;
 }
 
 #create-event {
